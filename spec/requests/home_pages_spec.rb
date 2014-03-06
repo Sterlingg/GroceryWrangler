@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "HomePages" do
+describe "UserPages" do
   describe "Index" do
     before{visit root_path}
 
