@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-JoseCanseco::Application.config.secret_key_base = '35fa1aed1deeddb2705f63b9a75aafd0d535e23240da5e64ea309cc3a80e278960e73436a43f9f9365e4e85ef8f8ca8c75db0757ec62f1aaf755f870576d8a70'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+JoseCanseco::Application.config.secret_key_base = secure_token
