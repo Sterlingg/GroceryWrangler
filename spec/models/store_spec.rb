@@ -22,4 +22,16 @@ describe Store do
     it { should be_valid}
   end
 
+  describe "associated receipts destruction" do
+    before{ FactoryGirl.create(:receipt, store: store) }
+
+    it "should destroy associated receipts" do
+      receipts = store.receipts.to_a
+      store.destroy
+      expect(receipts).not_to be_empty
+      receipts.each do |receipt|
+        expect(Receipt.where(id: receipt.id)).to be_empty
+      end
+    end
+  end
 end

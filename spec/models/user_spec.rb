@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let! (:user) do
-    FactoryGirl.create(:user)
-  end
+  let(:user){ FactoryGirl.create(:user) }
 
   subject{ user }
 
@@ -61,4 +59,18 @@ describe User do
       end
     end
   end
+
+  describe "associated receipts destruction" do
+    before{ FactoryGirl.create(:receipt, user: user) }
+
+    it "should destroy associated receipts" do
+      receipts = user.receipts.to_a
+      user.destroy
+      expect(receipts).not_to be_empty
+      receipts.each do |receipt|
+        expect(Receipt.where(id: receipt.id)).to be_empty
+      end
+    end
+  end
+
 end
