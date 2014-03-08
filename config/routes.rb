@@ -5,6 +5,8 @@ JoseCanseco::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
+  match '/receipts', to: 'receipts#index', via: 'get'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
