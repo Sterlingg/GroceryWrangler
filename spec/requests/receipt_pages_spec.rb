@@ -2,15 +2,23 @@ require 'spec_helper'
 
 describe "ReceiptPages" do
   describe "Index" do
-    before{visit receipts_path}
+    before{ visit receipts_path }
+    
+    subject{page}
+    it { should have_title('Receipts') }
+    it { should have_content('Receipts') }
 
-    it "should have the title Receipts" do
-      expect(page).to have_title('Receipts')
+    describe "the receipt container" do
+      describe "when there is more than one receipt in the DB" do
+        before do
+          FactoryGirl.create(:receipt)
+          visit receipts_path
+          subject { page }
+          it { should have_selector('div.row:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > span:nth-child(1)')}
+        end
+      end
     end
-
-    it "should have the content Receipts" do
-      expect(page).to have_content('Receipts')
-    end
+  end
 
   describe "Show" do
     let!(:receipt) { FactoryGirl.create(:receipt) }
@@ -34,4 +42,5 @@ end
     it { should have_content receipt.items.first.volume }
     
   end
+
 end
