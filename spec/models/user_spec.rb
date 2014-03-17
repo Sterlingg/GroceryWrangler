@@ -74,10 +74,8 @@ describe User do
   end
 
   describe "when email address is already taken" do
-    before do
-      user_with_same_email = user.dup
-      user_with_same_email.save
+    it "should not be valid" do
+      expect(user.dup).not_to be_valid
     end
-    it { should_not be_valid }
   end
 end
