@@ -39,14 +39,14 @@ describe Receipt do
   end
 
   describe "associated items destruction" do
-    before{ FactoryGirl.create(:item, receipt: receipt) }
+    before{ FactoryGirl.create(:receipt_item, receipt: receipt) }
 
     it "should destroy associated items" do
-      items = receipt.items.to_a
+      items = receipt.receipt_items.to_a
       receipt.destroy
       expect(items).not_to be_empty
       items.each do |itm|
-        expect(Item.where(id: itm.id)).to be_empty
+        expect(ReceiptItem.where(id: itm.id)).to be_empty
       end
     end
   end
