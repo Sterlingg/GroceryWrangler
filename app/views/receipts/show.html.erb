@@ -1,6 +1,7 @@
 <%= provide(:title, 'Show Receipts') %>
 
 <div class="row">
+
   <h1> Purchased at <%= @receipt.store.name %> </h1>
   <h2> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h2>
   <div class=".col-md-6">
@@ -8,7 +9,10 @@
   </div>
 </div>
 
-<table class="table">
+<!-- TODO: Refactor into helper! -->
+<%= link_to(content_tag(:span, "", { :class => 'glyphicon glyphicon-plus'} ) + "Add Item", modal_category_selection_path(receipt: @receipt), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#selection-modal', :class => "btn btn-primary btn-lg btn-block", :id => 'add-item-btn'})%>
+
+<table class="table" id="receipts-table">
   <tr>
     <th> Name </th>
     <th> Category </th>
@@ -16,19 +20,18 @@
     <th> Volume </th>
     <th> Price </th>
   </tr>
-
-  <% @receipt.items.each do |item|%>
+  <%= render partial: 'shared/item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
+  <% @receipt.receipt_items.each do |item|%>
   <tr>
-    <td> <%= item.name %> </td>     
-    <td> 
-      <% if item.category %>
-        <%= item.category.name  %> 
+    <td> <%= item.store_item.name %> </td>
+    <td>
+      <% if item.store_item.category %>
+        <%= item.store_item.category.name  %>
       <% end %>
     </td>
-    <td> <%= item.weight %> </td>
-    <td> <%= item.volume %> </td>
+    <td> <%= item.store_item.weight %> </td>
+    <td> <%= item.store_item.volume %> </td>
     <td> <%= item.price %> </td>
   </tr>
   <% end %>
 </table>
-
