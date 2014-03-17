@@ -10,6 +10,7 @@ class ReceiptsController < ApplicationController
 
   def show
     @receipt = Receipt.find(params[:id])
+    render layout: "receipt"
   end
 
 end
