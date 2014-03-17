@@ -6,10 +6,14 @@ JoseCanseco::Application.routes.draw do
   root 'users#index'
 
   resources :receipts
+  resources :categories
 
   match '/budgeting',    to: 'budgeting#index',    via: 'get'
   match '/price_trend',   to: 'price_trend#index',   via: 'get'
   match '/recipes', to: 'recipe#index', via: 'get'
+  match '/modal_category_selection', to: 'modal#category_selection', via: 'get'
+  match '/modal_item_selection', to: 'modal#item_selection', via: 'get'
+  match '/modal_add_items', to: 'modal#add_items', via: 'post'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
