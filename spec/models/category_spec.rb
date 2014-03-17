@@ -26,16 +26,21 @@ describe Category do
   end
   
   describe "associated items destruction" do
-    before{ FactoryGirl.create(:item, category: category) }
+    before{ FactoryGirl.create(:store_item, category: category) }
 
     it "should destroy associated items" do
-      items = category.items.to_a
+      items = category.store_items.to_a
       category.destroy
       expect(items).not_to be_empty
       items.each do |itm|
-        expect(Item.where(id: itm.id)).to be_empty
+        expect(StoreItem.where(id: itm.id)).to be_empty
       end
     end
   end
 
+  describe "when name is already taken" do
+    it "should not be valid" do
+      expect(category.dup).not_to be_valid
+    end
+  end
 end
