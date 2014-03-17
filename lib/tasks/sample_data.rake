@@ -3,11 +3,11 @@ namespace :db do
   task populate: :environment do
 
     10.times do |n|
-      Store.create!(name: Faker::Company.name)
+      Store.create!(name: Faker::Company.name) 
     end
 
     stores = Store.all()
-    25.times do
+    5.times do
       stores.each { |store| store.receipts.create!(date_purchased: rand(10.years).from_now,
                                                    notes: Faker::Lorem.paragraph,
                                                    total: 8.95) }
@@ -15,13 +15,14 @@ namespace :db do
 
     receipts = Receipt.all()
     10.times do
-      content = Faker::Lorem.sentence(5)
-      receipts.each { |receipt| receipt.items.create!(name: Faker::Company.name,
-                                                      description: Faker::Lorem.paragraph,
-                                                      upc: Faker::Number.number(12),
-                                                      price: 8.95,
-                                                      weight: 0.100,
-                                                      volume: 0.0) }
+      s_item = StoreItem.create!(name: Faker::Commerce.product_name, 
+                                 description: Faker::Lorem.paragraph,
+                                 category: Category.create!(name: Faker::Commerce.department),
+                        upc: Faker::Number.number(12), price: 8.95, weight: 0.100, volume: 0.0)
+      receipts.each { |receipt| receipt.receipt_items.create!(store_item: s_item,
+                                                              quantity: Faker::Number.number(2),
+                                                              price: 8.95
+                                                              ) }
     end
   end
 end
