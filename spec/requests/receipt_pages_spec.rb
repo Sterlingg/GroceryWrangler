@@ -3,8 +3,9 @@ require 'spec_helper'
 describe "ReceiptPages" do
   describe "Index" do
     before{ visit receipts_path }
-    
+
     subject{page}
+
     it { should have_title('Receipts') }
     it { should have_content('Receipts') }
 
@@ -21,12 +22,16 @@ describe "ReceiptPages" do
   end
 
   describe "Show" do
-    let!(:receipt) { FactoryGirl.create(:receipt) }
-    let!(:category) { FactoryGirl.create(:category) }
     before do 
-      FactoryGirl.create(:item, receipt: receipt, upc: 123456789101, price: 8.95, weight: 0.01, volume: 0.12, name: 'Spaghetti', category: category)
-      visit receipt_path(receipt)
-end
+      @receipt = FactoryGirl.create(:receipt)
+      @category = FactoryGirl.create(:category)
+      @store = FactoryGirl.create(:store)
+
+      @store_item = FactoryGirl.create(:store_item, upc: 123456789101, price: 8.95, weight: 0.01, volume: 0.12, name: 'Spaghetti', category: @category, store: @store)
+      FactoryGirl.create(:receipt_item, store_item: @store_item, receipt: @receipt)
+
+      visit receipt_path(@receipt)
+    end
     subject{ page }
     
     it { should have_content 'Name' }
@@ -35,12 +40,26 @@ end
     it { should have_content 'Volume' }
     it { should have_content 'Price' }
     it { should have_content 'Add Item' }
-    it { should have_content receipt.total }
-    it { should have_content receipt.items.first.name }
-    it { should have_content receipt.items.first.category.name }
-    it { should have_content receipt.items.first.weight }
-    it { should have_content receipt.items.first.volume }
-    
-  end
+    it { should have_css '#add-item-btn' }
+    it { should have_content @receipt.total }
+    it { should have_content @receipt.receipt_items.first.store_item.name }
+    it { should have_content @receipt.receipt_items.first.store_item.category.name }
+    it { should have_content @receipt.receipt_items.first.store_item.weight }
+    it { should have_content @receipt.receipt_items.first.store_item.volume }
 
+    describe "modal should not be displayed" do
+      it { should_not have_css('#selection-modal.in') }
+      it { should_not have_css('body.modal-open') }
+    end
+
+    describe "should display the category modal", js: true do
+      before { click_link "Add Item" }
+      it "should display the modal" do
+        page.should have_css('#selection-modal.in')
+      end
+      it "should dim the page" do
+        page.should have_css('body.modal-open') 
+      end
+    end
+  end
 end
