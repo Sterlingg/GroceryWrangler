@@ -4,6 +4,14 @@ describe "UserPages" do
   describe "Index" do
     before{visit root_path}
 
+    it "should have an input box for a username" do
+      expect(page).to have_css('input[type="text"]')
+    end
+    
+    it  "should have an input box for the password" do
+      expect(page).to have_css('input[type="password"]')
+    end
+
     it "should have the right links on the layout" do
       visit root_path
 
@@ -18,14 +26,6 @@ describe "UserPages" do
 
       click_link "Budgeting"
       expect(page).to have_title('Budgeting')
-    end
-
-    it "should have an input box for a username" do
-      expect(page).to have_css('input[type="text"]')
-    end
-    
-    it  "should have an input box for the password" do
-      expect(page).to have_css('input[type="password"]')
     end
   end
 end
