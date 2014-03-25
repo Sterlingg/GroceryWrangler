@@ -1,8 +1,16 @@
 require 'faker'
 
 FactoryGirl.define do
+  MAX_STORE_ITEM_NAME_LENGTH = 100
+  MAX_STORE_NAME_LENGTH = 50
+  MAX_CATEGORY_NAME_LENGTH = 50
+  MAX_USER_NAME_LENGTH = 50
+
   factory :category do
-    sequence(:name) { |n| Faker::Commerce.department + n.to_s}
+    sequence(:name) do |n| 
+      category_name = Faker::Commerce.department[0..MAX_CATEGORY_NAME_LENGTH - 1]
+      category_name[0.. category_name.length - n.to_s.length - 1] + n.to_s
+    end
   end
 
   factory :receipt_item do
@@ -12,18 +20,26 @@ FactoryGirl.define do
   end
 
   factory :store_item do
-    sequence(:name) { |n| Faker::Commerce.product_name + n.to_s}
+    sequence(:name) do |n| 
+      product_name = Faker::Commerce.product_name[0..MAX_STORE_ITEM_NAME_LENGTH - 1]
+      product_name[0.. product_name.length - n.to_s.length - 1] + n.to_s
+    end
     description Faker::Lorem.paragraph
     upc Faker::Number.number(12)
     price 8.95
     weight 0.500
     volume 0.0
-    category
-    store
+    factory :store_item_full do
+      category
+      store
+    end
   end
 
   factory :store do
-  sequence(:name) { |n| Faker::Company.name + n.to_s}
+    sequence(:name) do |n| 
+      store_name = Faker::Company.name[0..MAX_STORE_NAME_LENGTH - 1]
+      store_name[0.. store_name.length - n.to_s.length - 1] + n.to_s
+    end
   end
 
   factory :receipt do
@@ -46,7 +62,10 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:name) { |n| Faker::Internet.user_name + n.to_s }
+    sequence(:name) do |n| 
+      user_name = Faker::Internet.user_name[0..MAX_USER_NAME_LENGTH - 1]
+      user_name[0.. user_name.length - n.to_s.length - 1] + n.to_s
+    end
     sequence(:email) { |n| n.to_s + Faker::Internet.email }
   end
 end

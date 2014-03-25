@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
 
     10.times do |n|
-      Store.create!(name: Faker::Company.name) 
+      FactoryGirl.create(:store)
     end
 
     stores = Store.all()
@@ -13,16 +13,41 @@ namespace :db do
                                                    total: 8.95) }
     end
 
+    10.times do |n|
+      FactoryGirl.create(:category)
+    end
+
     receipts = Receipt.all()
-    10.times do
-      s_item = StoreItem.create!(name: Faker::Commerce.product_name, 
+    categories = Category.all()
+    # Add 1 store item for each category and add 10 store items to each receipt.
+    10.times do |n|
+      s_item = StoreItem.create!(name: Faker::Commerce.product_name + n.to_s, 
                                  description: Faker::Lorem.paragraph,
-                                 category: Category.create!(name: Faker::Commerce.department),
+                                 category: categories[n],
                         upc: Faker::Number.number(12), price: 8.95, weight: 0.100, volume: 0.0)
-      receipts.each { |receipt| receipt.receipt_items.create!(store_item: s_item,
+
+    end
+
+    store_items = StoreItem.all()
+    10.times do |n|
+      receipts.each { |receipt| receipt.receipt_items.create!(store_item: store_items.sample,
                                                               quantity: Faker::Number.number(2),
                                                               price: 8.95
                                                               ) }
     end
+
+
+    
+    # add 5 items to each category
+    categories.each do |cat|
+      5.times do |n|
+        cat.store_items << StoreItem.create!(name: Faker::Commerce.product_name + n.to_s + 10.to_s, 
+                                 description: Faker::Lorem.paragraph,
+                                 category: categories[n],
+                        upc: Faker::Number.number(12), price: 8.95, weight: 0.100, volume: 0.0)
+      end
+      cat.save
+    end
+
   end
 end
