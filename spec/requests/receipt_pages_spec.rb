@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe "ReceiptPages" do
+
+  before { @receipt = FactoryGirl.create(:receipt_with_items) }
   describe "Index" do
-    before{ visit receipts_path }
+    before do 
+      visit receipts_path 
+    end
 
     subject{page}
 
@@ -12,7 +16,6 @@ describe "ReceiptPages" do
     describe "the receipt container" do
       describe "when there is more than one receipt in the DB" do
         before do
-          FactoryGirl.create(:receipt)
           visit receipts_path
           subject { page }
           it { should have_selector('div.row:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > span:nth-child(1)')}
@@ -23,12 +26,12 @@ describe "ReceiptPages" do
 
   describe "Show" do
     before do 
-      @receipt = FactoryGirl.create(:receipt)
-      @category = FactoryGirl.create(:category)
-      @store = FactoryGirl.create(:store)
 
-      @store_item = FactoryGirl.create(:store_item, upc: 123456789101, price: 8.95, weight: 0.01, volume: 0.12, name: 'Spaghetti', category: @category, store: @store)
-      FactoryGirl.create(:receipt_item, store_item: @store_item, receipt: @receipt)
+      # @category = FactoryGirl.create(:category)
+      # @store = FactoryGirl.create(:store)
+
+      # @store_item = FactoryGirl.create(:store_item, upc: 123456789101, price: 8.95, weight: 0.01, volume: 0.12, name: 'Spaghetti', category: @category, store: @store)
+      # FactoryGirl.create(:receipt_item, store_item: @store_item, receipt: @receipt)
 
       visit receipt_path(@receipt)
     end
@@ -42,10 +45,7 @@ describe "ReceiptPages" do
     it { should have_content 'Add Item' }
     it { should have_css '#add-item-btn' }
     it { should have_content @receipt.total }
-    it { should have_content @receipt.receipt_items.first.store_item.name }
-    it { should have_content @receipt.receipt_items.first.store_item.category.name }
-    it { should have_content @receipt.receipt_items.first.store_item.weight }
-    it { should have_content @receipt.receipt_items.first.store_item.volume }
+    it { should have_content @receipt.receipt_items.first.store_item }
 
     describe "modal should not be displayed" do
       it { should_not have_css('#selection-modal.in') }
