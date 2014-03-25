@@ -1,0 +1,23 @@
+<%= form_tag modal_add_items_path(receipt: @receipt), remote: true do %>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Quantity</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @store_items.each do |item| %>
+    <tr>
+      <td><%= check_box_tag "item_ids[]", item.id, false, id: "item_id_#{item.id}" %></td>
+      <td> 
+	<%= select_tag "quantity_item_#{item.id}", options_for_select(Hash[(1..10).map { |num| [num, "#{num}"]}]), class: "selectpicker required"%>
+      </td>
+      <td><%= item.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= submit_tag "Add Items", class: "btn btn-default", id: "modal-add-items" %>
+<% end %>

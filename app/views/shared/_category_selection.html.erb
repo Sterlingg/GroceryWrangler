@@ -1,0 +1,8 @@
+<table class="table">
+  <% @categories.each do |cat|%>
+  <tr>
+    <td> <%= link_to(cat.name, modal_item_selection_path(category: cat, receipt: @receipt), remote: true) %> </td>     
+  </tr>
+  <% end %>
+</table>
+
