@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ReceiptItem do
-  let(:receipt_item) {FactoryGirl.create(:receipt_item)}
+  let(:receipt_item) {FactoryGirl.build(:receipt_item)}
 
   subject{ receipt_item }
 
@@ -25,5 +25,16 @@ describe ReceiptItem do
     before { receipt_item.price = 10000001 }
     it { should_not be_valid }
   end
+
+  describe "when saving the model" do
+    it "should not allow the store_item_id to be changed" do
+      receipt_item.save
+      receipt_item.store_item_id = 12345
+      receipt_item.save
+      receipt_item.errors.messages[:store_item_id].should include("Change of receipt_item.store_item_id not allowed!")
+    end
+  end    
 end
-        
+
+
+  
