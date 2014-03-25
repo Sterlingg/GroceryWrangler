@@ -21,6 +21,16 @@ describe StoreItem do
     it { should_not be_valid }
   end
 
+  describe "when name is too long" do
+    before { store_item.name = "a" * 101}
+    it { should_not be_valid }
+  end
+
+  describe "when name is the right length" do
+    before { store_item.name = "a" * 100 }
+    it { should be_valid}
+  end
+
   describe "when price is negative" do
     before { store_item.price = -12.5 }
     it { should_not be_valid }
