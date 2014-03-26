@@ -9,12 +9,14 @@ class ModalController < ApplicationController
     
     if @store_items
       @store_items.each do |store_item|
+
         same_store_item = get_receipt_item(@receipt, store_item)
         if same_store_item
           same_store_item.quantity += params["quantity_item_#{store_item.id}"].to_f
           same_store_item.save
         else
-          @new_receipt_items.push(ReceiptItem.create(quantity: params["quantity_item_#{store_item.id}"], price: 8.95, store_item: store_item, receipt: @receipt)) 
+        logger.debug params["store_item_price_#{store_item.id}"]
+          @new_receipt_items.push(ReceiptItem.create!(quantity: params["quantity_item_#{store_item.id}"], price: params["store_item_price_#{store_item.id}"], store_item: store_item, receipt: @receipt)) 
         end
       end
     end

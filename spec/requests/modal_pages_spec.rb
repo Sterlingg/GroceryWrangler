@@ -91,11 +91,14 @@ describe "ModalPages" do
                 expect(page).to have_xpath('//*[@id="receipts-table"]//tr', count: 2)
               end
             end
+
             it "should add a new receipt item to the receipt" do
               # TODO: expect .. change wasn't working in this test?'
               expect(@receipt.receipt_items.length).to eq 0
+              fill_in("store_item_price#{@store_item1.id}", with: '1.00')
               click_button 'modal-add-items'
               expect(@receipt.reload.receipt_items.length).to eq 1
+              expect(@receipt.reload.receipt_items.first.price).to eq '1.00'
             end 
 
             it "should add the item to the receipt table" do

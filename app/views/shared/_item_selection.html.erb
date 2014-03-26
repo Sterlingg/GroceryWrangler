@@ -4,6 +4,7 @@
     <tr>
       <th></th>
       <th>Quantity</th>
+      <th>Price</th>
       <th>Name</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td> 
 	<%= select_tag "quantity_item_#{item.id}", options_for_select(Hash[(1..10).map { |num| [num, "#{num}"]}]), class: "selectpicker required"%>
       </td>
+      <td> <%= text_field_tag "store_item_price_#{item.id}", '', maxlength: 15, class: "form-control input-sm", placeholder: "$"%></td>
       <td><%= item.name %></td>
     </tr>
     <% end %>
