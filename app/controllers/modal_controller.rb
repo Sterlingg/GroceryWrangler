@@ -15,10 +15,19 @@ class ModalController < ApplicationController
           same_store_item.quantity += params["quantity_item_#{store_item.id}"].to_f
           same_store_item.save
         else
-        logger.debug params["store_item_price_#{store_item.id}"]
-          @new_receipt_items.push(ReceiptItem.create!(quantity: params["quantity_item_#{store_item.id}"], price: params["store_item_price_#{store_item.id}"], store_item: store_item, receipt: @receipt)) 
+          @new_receipt_item = ReceiptItem.new(quantity: params["quantity_item_#{store_item.id}"], price: params["store_item_price_#{store_item.id}"], store_item: store_item, receipt: @receipt)
+
+          if @new_receipt_item.valid?
+            @new_receipt_items.push(@new_receipt_item) 
+          else
+            respond_to do |format|
+              format.js { render 'error' and return }
+            end
+          end
         end
       end
+
+      @new_receipt_items.each { |item| item.save }
     end
   end
 
