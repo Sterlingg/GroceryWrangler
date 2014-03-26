@@ -45,17 +45,57 @@ describe "ModalPages" do
       end
     end
 
-    describe "Item Selection", js: true do
+    describe "Item Selection" do
       before do
         @category = FactoryGirl.create(:category)
+        @store_item1 = FactoryGirl.create(:store_item)
+        @store_item2 = FactoryGirl.create(:store_item)
+
         click_link "Add Item"
       end
 
-      describe "when there are 2 items to select from" do
-        before do 
-          @store_item1 = FactoryGirl.create(:store_item)
-          @store_item2 = FactoryGirl.create(:store_item)
+      describe "the form layout", js:true do
+        before { @category.store_items << @store_item1 }
 
+        describe "With one item" do
+          before {click_link @category.name}
+
+          it "should have a checkbox" do
+            expect(page).to have_selector("#item_id_#{@store_item1.id}")
+          end
+
+          it "should have a quantity selector" do
+            expect(page).to have_selector("select")
+          end
+
+          it "should have an input for the price" do
+            expect(page).to have_selector('input[type="text"]')
+          end          
+
+          describe "the table header" do
+            it "should have a price header" do
+              within(".modal-body") do
+                expect(page).to have_content('Price')
+              end
+            end
+
+            it "should have a quantity header" do
+              within(".modal-body") do
+                expect(page).to have_content('Quantity')
+              end
+            end
+
+            it "should have a name header" do
+              within(".modal-body") do
+                expect(page).to have_content('Name')
+              end
+            end
+          end
+        end
+      end
+
+      describe "when there are 2 items to select from", js: true do
+        before do 
           @category.store_items << @store_item1
           @category.store_items << @store_item2
           click_link @category.name
@@ -71,6 +111,7 @@ describe "ModalPages" do
         end
 
         describe "when the add button is clicked" do
+
           describe "when one item is checked" do
             before {check "item_id_#{@store_item1.id}"}
 
@@ -84,6 +125,7 @@ describe "ModalPages" do
                 click_link @category.name
                 check "item_id_#{@store_item1.id}"
               end
+
               it "should not add another item to the receipt" do
                 expect(page).to have_xpath('//*[@id="receipts-table"]//tr', count: 2)
                 click_button 'modal-add-items'
