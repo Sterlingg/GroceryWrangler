@@ -39,6 +39,7 @@ describe "ReceiptPages" do
     
     it { should have_content 'Name' }
     it { should have_content 'Category' }
+    it { should have_content 'Quantity' }
     it { should have_content 'Weight' }
     it { should have_content 'Volume' }
     it { should have_content 'Price' }
