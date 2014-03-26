@@ -13,12 +13,8 @@
 <%= link_to(content_tag(:span, "", { :class => 'glyphicon glyphicon-plus'} ) + "Add Item", modal_category_selection_path(receipt: @receipt), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#selection-modal', :class => "btn btn-primary btn-lg btn-block", :id => 'add-item-btn'})%>
 
 <table class="table" id="receipts-table">
-  <tr>
-    <th> Name </th>
-    <th> Category </th>
-    <th> Weight </th>
-    <th> Volume </th>
-    <th> Price </th>
-  </tr>
-  <%= render partial: 'shared/item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
+  <%= render partial: 'shared/item_table_header' %>
+  <tbody>
+    <%= render partial: 'shared/item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
+  </tbody>
 </table>
