@@ -18,14 +18,14 @@ describe "UserPages" do
       click_link "Receipts"
       expect(page).to have_title('Receipts')
 
-      click_link "Recipes"
-      expect(page).to have_title('Recipes')
+      # click_link "Recipes"
+      # expect(page).to have_title('Recipes')
 
-      click_link "Price Trends"
-      expect(page).to have_title('Price Trends')
+      # click_link "Price Trends"
+      # expect(page).to have_title('Price Trends')
 
-      click_link "Budgeting"
-      expect(page).to have_title('Budgeting')
+      # click_link "Budgeting"
+      # expect(page).to have_title('Budgeting')
     end
   end
 end

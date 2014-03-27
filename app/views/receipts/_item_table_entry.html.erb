@@ -1,0 +1,14 @@
+<% receipt_items.each do |item|%>
+  <tr>
+    <td> <%= item.store_item.name %> </td>     
+    <td> 
+      <% if item.store_item.category %>
+        <%= item.store_item.category.name  %> 
+      <% end %>
+    </td>
+    <td id=<%="item_quantity_#{item.id}"%>> <%= string_to_int_or_float(item.quantity) %> </td>
+    <td> <%= item.store_item.weight %> </td>
+    <td> <%= item.store_item.volume %> </td>
+    <td> <%= item.price %> </td>
+  </tr>
+ <% end %>

@@ -9,12 +9,11 @@
   </div>
 </div>
 
-<!-- TODO: Refactor into helper! -->
-<%= link_to(content_tag(:span, "", { :class => 'glyphicon glyphicon-plus'} ) + "Add Item", modal_category_selection_path(receipt: @receipt), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#selection-modal', :class => "btn btn-primary btn-lg btn-block", :id => 'add-item-btn'})%>
+<%= add_item_button %>
 
 <table class="table" id="receipts-table">
-  <%= render partial: 'shared/item_table_header' %>
+  <%= render partial: 'item_table_header' %>
   <tbody>
-    <%= render partial: 'shared/item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
+    <%= render partial: 'item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
   </tbody>
 </table>
