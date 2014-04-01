@@ -1,5 +1,11 @@
 class ReceiptItemsController < ApplicationController
-
+  
+  # PUT
+  def edit
+    
+  end
+  
+  # GET /receipt_items_selection_dialog
   def selection_dialog
     @category = Category.find(params[:category])
     @receipt = Receipt.find(params[:receipt])
