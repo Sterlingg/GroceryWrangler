@@ -11,8 +11,10 @@
 
 <%= add_item_button %>
 
-<table class="table" id="receipts-table">
-  <%= render partial: 'item_table_header' %>
+<table class="table table-responsive table-hover" id="receipts-table">
+  <thead>
+    <%= render partial: 'item_table_header' %>
+  </thead>
   <tbody>
     <%= render partial: 'item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
   </tbody>

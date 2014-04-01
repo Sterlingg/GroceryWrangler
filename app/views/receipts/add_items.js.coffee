@@ -4,6 +4,5 @@ $('#receipts-table>tbody').append(table_rows)
 
 items_to_update = <%= json_escape(@items_to_update) %>
 
-for item in items_to_update                      
-  console.log(item)
-  $("#item_quantity_#{item['item_id']}").html("#{parseFloat(item['quantity']).toFixed(2)}")
+for item in items_to_update
+  $("#item_quantity_#{item['item_id']}").html("#{item['quantity']}")

@@ -15,5 +15,4 @@ module ReceiptsHelper
 
     link_to(span + "Add Item", category_selection_dialog_path(receipt: @receipt), link_to_opts)
   end
-
 end
