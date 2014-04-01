@@ -1,5 +1,6 @@
 class ReceiptsController < ApplicationController
 
+  # POST /receipt_add_items
   def add_items
     @store_items = StoreItem.where(id: params[:item_ids])
     
@@ -35,19 +36,21 @@ class ReceiptsController < ApplicationController
     end
   end
 
+  # GET /receipts
   def index
     @receipts = Receipt.all()
   end
 
+  # GET /receipt/#
   def show
     @receipt = Receipt.find(params[:id])
     render layout: "receipt"
   end
 
   private
+  # Given a store_item it looks through the receipt for a receipt_item that has
+  # the given store_item, or else it returns nil.
   def get_receipt_item(receipt, store_item)
-    # Given a store_item it looks through the receipt for a receipt_item that has
-    # the given store_item, or else it returns nil.
     if receipt.nil? or store_item.nil?
        return nil
      end
