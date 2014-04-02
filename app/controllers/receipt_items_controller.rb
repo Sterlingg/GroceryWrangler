@@ -1,5 +1,5 @@
 class ReceiptItemsController < ApplicationController
-  
+
   # GET /receipt_items_selection_dialog
   def selection_dialog
     @category = Category.find(params[:category])
@@ -13,6 +13,8 @@ class ReceiptItemsController < ApplicationController
   # PATCH /receipt_items/#
   def update
     @receipt_item = ReceiptItem.find(params[:id])
+    @old_price = @receipt_item.price
+    @old_quantity = @receipt_item.quantity
 
     if @receipt_item.update_attributes(receipt_item_params)
       respond_to do |format|
@@ -21,7 +23,7 @@ class ReceiptItemsController < ApplicationController
     else
       respond_to do |format|
         #TODO: Error here.
-        head :ok
+        format.js{head :ok}
       end      
     end
   end

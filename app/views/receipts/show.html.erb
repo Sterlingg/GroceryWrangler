@@ -4,14 +4,14 @@
 
   <h1> Purchased at <%= @receipt.store.name %> </h1>
   <h2> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h2>
-  <div class=".col-md-6">
+  <div id="receipt-total" class=".col-md-6">
     $<%= @receipt.total %>
   </div>
 </div>
 
 <%= add_item_button %>
 
-<table class="table table-responsive table-hover" id="receipts-table">
+<table class="table table-responsive table-hover" id="receipt-item-table">
   <thead>
     <%= render partial: 'item_table_header' %>
   </thead>
