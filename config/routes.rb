@@ -8,7 +8,7 @@ JoseCanseco::Application.routes.draw do
 
   resources :receipts
   resources :categories
-  resources :receipt_items
+#  resources :receipt_items
 
   match '/budgeting',    to: 'budgeting#index',    via: 'get'
   match '/price_trend',   to: 'price_trend#index',   via: 'get'
@@ -18,6 +18,7 @@ JoseCanseco::Application.routes.draw do
   match '/receipt_add_items', to: 'receipts#add_items', via: 'post'
 
   match '/receipt_items_selection_dialog', to: 'receipt_items#selection_dialog', via: 'get'
+  match '/receipt_items', to: 'receipt_items#update', via: 'patch'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
