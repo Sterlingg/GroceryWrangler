@@ -17,13 +17,13 @@
   </td>
   <td class="td-centered"> 
     <span id=<%="item_quantity_#{receipt_item.id}"%>> <%= string_to_int_or_float(receipt_item.quantity) %> </span>
-    <%= f.text_field :quantity, class: "hide" %>
+    <%= f.text_field :quantity, class: "hide", size: 4 %>
 </td>
   <td class="td-centered"> <span><%= receipt_item.store_item.weight %></span> </td>
   <td class="td-centered"> <span><%= receipt_item.store_item.volume %></span> </td>
   <td class="td-centered" %>
     <span id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
-    <%= f.text_field :price, class: "hide" %>
+    <%= f.text_field :price, class: "hide", size: 5 %>
   </td>
 </tr>
 <% end %>
