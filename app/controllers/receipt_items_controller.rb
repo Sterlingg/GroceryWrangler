@@ -11,7 +11,7 @@ class ReceiptItemsController < ApplicationController
     else
       respond_to do |format|
         #TODO: Error here.
-        format.js
+        head :ok
       end      
     end
   end
