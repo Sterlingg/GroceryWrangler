@@ -9,6 +9,12 @@ $("#item_price_#{item_id}").html(<%= @receipt_item.price %>)
 
 # Update the receipt total.
 original_receipt_total = parseFloat $('#receipt-total').html().substring(1)
-new_receipt_total = original_receipt_total + (new_quantity - old_quantity) * new_price
+
+if(new_price.toFixed(2) == old_price.toFixed(2))
+  new_receipt_total = original_receipt_total + (new_quantity - old_quantity) * new_price
+else if(new_quantity.toFixed(2) == old_quantity.toFixed(2))
+  new_receipt_total = original_receipt_total + (new_quantity * (new_price - old_price))
+else
+  new_receipt_total = original_receipt_total + (new_quantity - old_quantity) * (new_price - old_price)
 
 $('#receipt-total').html "$" + new_receipt_total.toFixed(2)
