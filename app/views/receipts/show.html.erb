@@ -10,6 +10,11 @@
 </div>
 
 <%= add_item_button %>
+<%= form_for(:receipt_item, url: receipt_items_path, html: { method: :patch }, remote: true) do |f| %>
+<%= f.hidden_field :id, id: "item-id" %>
+<%= f.hidden_field :quantity, id: "item-quantity" %>
+<%= f.hidden_field :price, id: "item-price" %>
+<% end %>
 
 <table class="table table-responsive table-hover" id="receipt-item-table">
   <thead>
@@ -19,3 +24,4 @@
     <%= render partial: '/receipt_items/item_table_entry', locals: { receipt_items: @receipt.receipt_items } %>
   </tbody>
 </table>
+
