@@ -14,8 +14,10 @@ JoseCanseco::Application.routes.draw do
   match '/price_trend',   to: 'price_trend#index',   via: 'get'
   match '/recipes', to: 'recipe#index', via: 'get'
   match '/category_selection_dialog', to: 'categories#selection_dialog', via: 'get'
-  match '/receipt_item_selection_dialog', to: 'receipt_items#selection_dialog', via: 'get'
+
   match '/receipt_add_items', to: 'receipts#add_items', via: 'post'
+
+  match '/receipt_items_selection_dialog', to: 'receipt_items#selection_dialog', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
