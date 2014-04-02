@@ -12,10 +12,10 @@ class ReceiptItemsController < ApplicationController
 
   # PATCH /receipt_items/#
   def update
-    @receipt_item = ReceiptItem.find(params[:id])
+    @receipt_item = ReceiptItem.find(params[:receipt_item][:id])
     @old_price = @receipt_item.price
     @old_quantity = @receipt_item.quantity
-
+    
     if @receipt_item.update_attributes(receipt_item_params)
       respond_to do |format|
         format.js
