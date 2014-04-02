@@ -1,0 +1,30 @@
+<% receipt_items.each do |receipt_item|%>
+<%= form_for receipt_item, remote: true do |f| %>
+<tr>
+  <td class="receipt-td-align-left">
+    <div class="btn-group">
+      <%= save_button %> 
+      <%= edit_button %>
+      <%= cancel_edit_button %>
+    </div>
+  </td>
+
+  <td class="td-centered"> <span><%= receipt_item.store_item.name %></span> </td>     
+  <td class="td-centered"> 
+    <% if receipt_item.store_item.category %>
+    <span> <%= receipt_item.store_item.category.name %> </span>
+    <% end %>
+  </td>
+  <td class="td-centered"> 
+    <span id=<%="item_quantity_#{receipt_item.id}"%>> <%= string_to_int_or_float(receipt_item.quantity) %> </span>
+    <%= f.text_field :quantity, class: "hide" %>
+</td>
+  <td class="td-centered"> <span><%= receipt_item.store_item.weight %></span> </td>
+  <td class="td-centered"> <span><%= receipt_item.store_item.volume %></span> </td>
+  <td class="td-centered" %>
+    <span id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
+    <%= f.text_field :price, class: "hide" %>
+  </td>
+</tr>
+<% end %>
+<% end %>
