@@ -21,10 +21,6 @@ create_input = (old_elem, info) ->
 
 $(document).ready ->
     cols_to_replace = 
-      name: 
-        index: 1
-        type: 'text'
-        class: 'form-control'
       quantity: 
         index: 3
         type: 'text'
@@ -33,17 +29,6 @@ $(document).ready ->
         index: 6
         type: 'text'
         class: 'form-control'
-
-    $('.edit-item-btn').each (btn) ->
-      buttons = get_buttons $(this)
-
-      for name, values of cols_to_replace
-        console.log($(buttons['row'])[0])
-        td = $(buttons['row'][values['index']])
-
-        new_input_box = create_input(td, cols_to_replace)
-
-        td.append(new_input_box)
         
     $('.cancel-edit-item-btn').bind 'click',
         ->
@@ -74,7 +59,6 @@ $(document).ready ->
           $('span', td).removeClass "hide"
           $('input', td).addClass "hide"
 
-    
     $('.edit-item-btn').bind 'click',
         ->
           buttons = get_buttons $(this)
