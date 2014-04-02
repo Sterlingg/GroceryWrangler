@@ -22,11 +22,11 @@ create_input = (old_elem, info) ->
 $(document).bind 'page:change', ->
     cols_to_replace = 
       quantity: 
-        index: 3
+        index: 4
         type: 'text'
         class: 'form-control'
       price: 
-        index: 6
+        index: 7
         type: 'text'
         class: 'form-control'
 
@@ -34,14 +34,13 @@ $(document).bind 'page:change', ->
     # Calculate the total for the receipt.
     receipt_total = 0.0
     $('#receipt-item-table>tbody>tr').each ->
-      $(':nth-child(7)>span', $(this))
-      price =  parseFloat($(':nth-child(7)>span', $(this)).html())
-      quantity =  parseFloat($(':nth-child(4)>span', $(this)).html())
+      price =  parseFloat($('.item-table-price-text', $(this)).html())
+      quantity =  parseFloat($('.item-table-quantity-text', $(this)).html())
       console.log quantity
       receipt_total += price * quantity
       console.log receipt_total
   
-
+    # Update the receipt total.
     $('#receipt-total').html "$" + receipt_total.toFixed(2)
 
     
@@ -74,6 +73,21 @@ $(document).bind 'page:change', ->
           $('span', td).removeClass "hide"
           $('input', td).addClass "hide"
 
+        # Get the fields from the table to submit.
+        tr = $(buttons['row'][0]).parent()
+        table_id = $('.item-table-id', tr)
+        table_quantity = $('.item-table-quantity', tr)
+        table_price = $('.item-table-price', tr)
+
+        # Fill in the hidden field with these values.
+        $('#item-id').val(table_id.val())
+        $('#item-quantity').val(table_quantity.val())
+        $('#item-price').val(table_price.val())
+
+        form = $('#item-id').parent()
+
+        form.submit()
+        
     $('.edit-item-btn').bind 'click',
         ->
           buttons = get_buttons $(this)
