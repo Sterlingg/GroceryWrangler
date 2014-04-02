@@ -8,7 +8,7 @@ describe ReceiptItemsController do
   describe "PATCH update" do
 
     describe "when the item is valid" do
-      before { xhr :patch, :update, :id => receipt_item1.id, :receipt_item => {quantity: 1, price: 8.95} }
+      before { xhr :patch, :update, :receipt_item => {id: receipt_item1.id, quantity: 1, price: 8.95} }
 
       it "renders the update template" do
         expect(response).to render_template("update")
@@ -22,10 +22,10 @@ describe ReceiptItemsController do
     end
 
     describe "when the item is not valid" do
-      before { xhr :patch, :update, :id => receipt_item1.id, :receipt_item => {quantity: 1, price: -10.00} }
+      before { xhr :patch, :update, :receipt_item => {id: receipt_item1.id, quantity: 1, price: -10.00} }
 
       it "renders the update template" do
-        expect(response).to render_template("update")
+        expect(response).to_not render_template("update")
       end
 
       it "does not update the quantity and price" do

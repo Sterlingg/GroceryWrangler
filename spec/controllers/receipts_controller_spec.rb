@@ -32,6 +32,12 @@ describe ReceiptsController do
           post(:add_items, {item_ids: [store_item1.id], receipt: receipt.id, "store_item_price_#{store_item1.id}" => 1.0, "quantity_item_#{store_item1.id}" => 1, format: :js})
         end.to change {ReceiptItem.all().length}.by 1
       end
+
+      it "should have a total variable that updates the view" do
+        post(:add_items, {item_ids: [store_item1.id], receipt: receipt.id, "store_item_price_#{store_item1.id}" => 1.0, "quantity_item_#{store_item1.id}" => 1, format: :js})
+
+        assigns(:total_added).should eq (1.0 * 1)
+      end
     end
 
     describe "when the store item is already on the receipt" do
@@ -47,6 +53,12 @@ describe ReceiptsController do
           receipt.receipt_items << receipt_item1
           post(:add_items, {item_ids: [store_item1.id], receipt: receipt.id, "quantity_item_#{store_item1.id}" => 1, format: :js})
         end.to change {ReceiptItem.find(receipt_item1).quantity}.by 1
+      end
+
+      it "should have a total variable that updates the view" do
+        receipt.receipt_items << receipt_item1
+        post(:add_items, {item_ids: [store_item1.id], receipt: receipt.id, "quantity_item_#{store_item1.id}" => 1, format: :js})
+        assigns(:total_added).should eq (receipt_item1.price * 1)
       end
     end
   end   
