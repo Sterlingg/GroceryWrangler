@@ -42,7 +42,6 @@ $(document).bind 'page:change', ->
   
     # Update the receipt total.
     $('#receipt-total').html "$" + receipt_total.toFixed(2)
-
     
     $('.cancel-edit-item-btn').bind 'click',
         ->

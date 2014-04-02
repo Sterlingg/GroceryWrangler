@@ -7,6 +7,8 @@ class ReceiptsController < ApplicationController
     @receipt = Receipt.find(params[:receipt])
     @new_receipt_items = []
     @items_to_update = []
+    
+    @total_added = 0
 
     if @store_items
       @store_items.each do |store_item|
@@ -14,6 +16,7 @@ class ReceiptsController < ApplicationController
         same_receipt_item = get_receipt_item(@receipt, store_item)
         if same_receipt_item
           same_receipt_item.quantity += params["quantity_item_#{store_item.id}"].to_f
+          @total_added += params["quantity_item_#{store_item.id}"].to_f * same_receipt_item.price
           same_receipt_item.save
           @items_to_update.append({item_id: same_receipt_item.id, quantity: same_receipt_item.quantity})
         else
@@ -21,6 +24,7 @@ class ReceiptsController < ApplicationController
 
           if @new_receipt_item.valid?
             @new_receipt_items.push(@new_receipt_item) 
+            @total_added += @new_receipt_item.price * @new_receipt_item.quantity
           else
             respond_to do |format|
               format.js { render 'error' and return }
