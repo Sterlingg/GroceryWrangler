@@ -1,6 +1,9 @@
 <% receipt_items.each do |receipt_item|%>
-<%= form_for receipt_item, remote: true do |f| %>
 <tr>
+  <td class="hide">
+    <%= text_field :receipt_item, :id, value: receipt_item.id, class: "hide item-table-id", size: 4 %>
+  </td>
+
   <td class="receipt-td-align-left">
     <div class="btn-group">
       <%= save_button %> 
@@ -16,15 +19,14 @@
     <% end %>
   </td>
   <td class="td-centered"> 
-    <span id=<%="item_quantity_#{receipt_item.id}"%>> <%= string_to_int_or_float(receipt_item.quantity) %> </span>
-    <%= f.text_field :quantity, class: "hide", size: 4 %>
+    <span class="item-table-quantity-text" id=<%="item_quantity_#{receipt_item.id}"%>> <%= string_to_int_or_float(receipt_item.quantity) %> </span>
+    <%= text_field :receipt_item, :quantity, class: "hide item-table-quantity", size: 4 %>
 </td>
   <td class="td-centered"> <span><%= receipt_item.store_item.weight %></span> </td>
   <td class="td-centered"> <span><%= receipt_item.store_item.volume %></span> </td>
   <td class="td-centered" %>
-    <span id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
-    <%= f.text_field :price, class: "hide", size: 5 %>
+    <span class="item-table-price-text"id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
+    <%= text_field :receipt_item, :price, class: "hide item-table-price", size: 5 %>
   </td>
 </tr>
-<% end %>
 <% end %>
