@@ -1,7 +1,7 @@
 <table class="table">
   <% @categories.each do |cat|%>
   <tr>
-    <td> <%= link_to(cat.name, receipt_item_selection_dialog_path(category: cat, receipt: @receipt), remote: true) %> </td>     
+    <td> <%= link_to(cat.name, receipt_items_selection_dialog_path(category: cat, receipt: @receipt), remote: true) %> </td>     
   </tr>
   <% end %>
 </table>
