@@ -1,8 +1,19 @@
 class ReceiptItemsController < ApplicationController
   
-  # PUT
-  def edit
-    
+  # PATCH /receipt_items/#
+  def update
+    @receipt_item = ReceiptItem.find(params[:id])
+
+    if @receipt_item.update_attributes(receipt_item_params)
+      respond_to do |format|
+        format.js
+      end
+    else
+      respond_to do |format|
+        #TODO: Error here.
+        format.js
+      end      
+    end
   end
   
   # GET /receipt_items_selection_dialog
@@ -11,9 +22,12 @@ class ReceiptItemsController < ApplicationController
     @receipt = Receipt.find(params[:receipt])
     @store_items = @category.store_items
      respond_to do |format|
-      # TODO: Appropriate page for browsers without JS\
       format.js 
     end
   end
 
+  private 
+  def receipt_item_params
+    params.require(:receipt_item).permit(:quantity, :price)
+  end
 end
