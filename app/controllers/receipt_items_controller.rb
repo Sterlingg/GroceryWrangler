@@ -1,5 +1,15 @@
 class ReceiptItemsController < ApplicationController
   
+  # GET /receipt_items_selection_dialog
+  def selection_dialog
+    @category = Category.find(params[:category])
+    @receipt = Receipt.find(params[:receipt])
+    @store_items = @category.store_items
+     respond_to do |format|
+      format.js 
+    end
+  end
+
   # PATCH /receipt_items/#
   def update
     @receipt_item = ReceiptItem.find(params[:id])
@@ -13,16 +23,6 @@ class ReceiptItemsController < ApplicationController
         #TODO: Error here.
         head :ok
       end      
-    end
-  end
-  
-  # GET /receipt_items_selection_dialog
-  def selection_dialog
-    @category = Category.find(params[:category])
-    @receipt = Receipt.find(params[:receipt])
-    @store_items = @category.store_items
-     respond_to do |format|
-      format.js 
     end
   end
 
