@@ -19,7 +19,7 @@ create_input = (old_elem, info) ->
 
     new_elem
 
-$(document).ready ->
+$(document).bind 'page:change', ->
     cols_to_replace = 
       quantity: 
         index: 3
@@ -29,7 +29,22 @@ $(document).ready ->
         index: 6
         type: 'text'
         class: 'form-control'
-        
+
+
+    # Calculate the total for the receipt.
+    receipt_total = 0.0
+    $('#receipt-item-table>tbody>tr').each ->
+      $(':nth-child(7)>span', $(this))
+      price =  parseFloat($(':nth-child(7)>span', $(this)).html())
+      quantity =  parseFloat($(':nth-child(4)>span', $(this)).html())
+      console.log quantity
+      receipt_total += price * quantity
+      console.log receipt_total
+  
+
+    $('#receipt-total').html "$" + receipt_total.toFixed(2)
+
+    
     $('.cancel-edit-item-btn').bind 'click',
         ->
           buttons = get_buttons $(this)
