@@ -8,7 +8,7 @@ JoseCanseco::Application.routes.draw do
 
   resources :receipts
   resources :categories
-#  resources :receipt_items
+  resources :receipt_items, only: [:destroy]
 
   match '/budgeting',    to: 'budgeting#index',    via: 'get'
   match '/price_trend',   to: 'price_trend#index',   via: 'get'
