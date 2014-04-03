@@ -1,5 +1,5 @@
 <% receipt_items.each do |receipt_item|%>
-<tr>
+<tr id=<%= "receipt-table-item-#{receipt_item.id}" %>>
   <td class="hide">
     <%= text_field :receipt_item, :id, value: receipt_item.id, class: "hide item-table-id", size: 4 %>
   </td>
@@ -27,6 +27,9 @@
   <td class="td-centered" %>
     <span class="item-table-price-text"id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
     <%= text_field :receipt_item, :price, class: "hide item-table-price", size: 5 %>
+  </td>
+  <td>
+    <%= delete_button  receipt_item.id%>
   </td>
 </tr>
 <% end %>
