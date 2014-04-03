@@ -85,15 +85,13 @@ save_btn_handler = ->
   form = $('#item-id').parent()
   
   form.submit()
-        
-  $('.edit-item-btn').bind 'click', edit_btn_handler
 
 $(document).bind 'page:change', ->
+  $('#receipt-item-table').on 'click', '.cancel-edit-item-btn', cancel_btn_handler
+  $('#receipt-item-table').on 'click', '.edit-item-btn', edit_btn_handler
+  $('#receipt-item-table').on 'click', '.save-item-btn', save_btn_handler
 
-  $('.cancel-edit-item-btn').bind 'click', cancel_btn_handler
-  $('.edit-item-btn').bind 'click', edit_btn_handler
-  $('.save-item-btn').bind 'click', save_btn_handler
-    # Calculate the total for the receipt.
+  # Calculate the total for the receipt.
   receipt_total = 0.0
   $('#receipt-item-table>tbody>tr').each ->
     price =  parseFloat($('.item-table-price-text', $(this)).html())
