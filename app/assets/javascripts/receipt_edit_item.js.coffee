@@ -1,9 +1,29 @@
+cols_to_replace = 
+  quantity: 
+    index: 4
+    type: 'text'
+    class: 'form-control'
+  price: 
+    index: 7
+    type: 'text'
+    class: 'form-control'
+
 get_buttons = (button_context) ->
   button_group = button_context.parent()
   row: $(button_context.parent().parent().parent().children())
   cancel: $('.cancel-edit-item-btn', button_group)
   edit: $('.edit-item-btn', button_group)
   save: $('.save-item-btn', button_group)
+
+hide_save_btn_group = (buttons) ->
+  buttons['cancel'].addClass "hide"
+  buttons['save'].addClass "hide"
+  buttons['edit'].removeClass "hide"
+
+show_save_btn_group = (buttons) ->
+  buttons['save'].removeClass "hide"
+  buttons['cancel'].removeClass "hide"
+  buttons['edit'].addClass "hide"
 
 # Creates a new input box with the width of the
 # element previously contained in this column.
@@ -19,85 +39,66 @@ create_input = (old_elem, info) ->
 
     new_elem
 
-$(document).bind 'page:change', ->
-    cols_to_replace = 
-      quantity: 
-        index: 4
-        type: 'text'
-        class: 'form-control'
-      price: 
-        index: 7
-        type: 'text'
-        class: 'form-control'
-
-
-    # Calculate the total for the receipt.
-    receipt_total = 0.0
-    $('#receipt-item-table>tbody>tr').each ->
-      price =  parseFloat($('.item-table-price-text', $(this)).html())
-      quantity =  parseFloat($('.item-table-quantity-text', $(this)).html())
-      console.log quantity
-      receipt_total += price * quantity
-      console.log receipt_total
-  
-    # Update the receipt total.
-    $('#receipt-total').html "$" + receipt_total.toFixed(2)
-    
-    $('.cancel-edit-item-btn').bind 'click',
-        ->
-          buttons = get_buttons $(this)
+cancel_btn_handler = ->
+  buttons = get_buttons $(this)
           
-          for name, values of cols_to_replace
-            td = $(buttons['row'][values['index']])
+  for name, values of cols_to_replace
+    td = $(buttons['row'][values['index']])
   
-            $('input', td).addClass "hide"
-            $('span', td).removeClass "hide"
+    $('input', td).addClass "hide"
+    $('span', td).removeClass "hide"
 
-          buttons['cancel'].addClass("hide");
+  hide_save_btn_group(buttons)
 
-          buttons['save'].addClass("hide");
-          buttons['edit'].removeClass("hide");
-          
-    $('.save-item-btn').bind 'click',
-      ->
-        buttons = get_buttons $(this)
+edit_btn_handler = ->
+  buttons = get_buttons $(this)
+  for name, values of cols_to_replace
+    td = $(buttons['row'][values['index']])
+  
+    $('span', td).addClass "hide"
+    $('input', td).removeClass "hide"
 
-        buttons['cancel'].addClass "hide"
-        buttons['save'].addClass "hide"
-        buttons['edit'].removeClass "hide"
+  show_save_btn_group(buttons)
 
-        for name, values of cols_to_replace
-          td = $(buttons['row'][values['index']])
+save_btn_handler = ->
+  buttons = get_buttons $(this)
 
-          $('span', td).removeClass "hide"
-          $('input', td).addClass "hide"
+  hide_save_btn_group(buttons)
 
-        # Get the fields from the table to submit.
-        tr = $(buttons['row'][0]).parent()
-        table_id = $('.item-table-id', tr)
-        table_quantity = $('.item-table-quantity', tr)
-        table_price = $('.item-table-price', tr)
+  for name, values of cols_to_replace
+    td = $(buttons['row'][values['index']])
 
-        # Fill in the hidden field with these values.
-        $('#item-id').val(table_id.val())
-        $('#item-quantity').val(table_quantity.val())
-        $('#item-price').val(table_price.val())
+    $('span', td).removeClass "hide"
+    $('input', td).addClass "hide"
 
-        form = $('#item-id').parent()
+  # Get the fields from the table to submit.
+  tr = $(buttons['row'][0]).parent()
+  table_id = $('.item-table-id', tr)
+  table_quantity = $('.item-table-quantity', tr)
+  table_price = $('.item-table-price', tr)
 
-        form.submit()
+  # Fill in the hidden field with these values.
+  $('#item-id').val(table_id.val())
+  $('#item-quantity').val(table_quantity.val())
+  $('#item-price').val(table_price.val())
+
+  form = $('#item-id').parent()
+  
+  form.submit()
         
-    $('.edit-item-btn').bind 'click',
-        ->
-          buttons = get_buttons $(this)
-          for name, values of cols_to_replace
-            td = $(buttons['row'][values['index']])
+  $('.edit-item-btn').bind 'click', edit_btn_handler
 
-            $('span', td).addClass "hide"
-            $('input', td).removeClass "hide"
+$(document).bind 'page:change', ->
 
-          # Show the cancel button and remove the edit button.
-          # To be replaced by the save item button.
-          buttons['save'].removeClass "hide"
-          buttons['cancel'].removeClass "hide"
-          buttons['edit'].addClass "hide"
+  $('.cancel-edit-item-btn').bind 'click', cancel_btn_handler
+  $('.edit-item-btn').bind 'click', edit_btn_handler
+  $('.save-item-btn').bind 'click', save_btn_handler
+    # Calculate the total for the receipt.
+  receipt_total = 0.0
+  $('#receipt-item-table>tbody>tr').each ->
+    price =  parseFloat($('.item-table-price-text', $(this)).html())
+    quantity =  parseFloat($('.item-table-quantity-text', $(this)).html())
+    receipt_total += price * quantity
+  
+  # Update the receipt total.
+  $('#receipt-total').html "$" + receipt_total.toFixed(2)
