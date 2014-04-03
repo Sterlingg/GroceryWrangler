@@ -1,5 +1,11 @@
 class ReceiptItemsController < ApplicationController
 
+  # DELETE /receipt_items
+  def destroy
+    @receipt_item = ReceiptItem.find(params[:id])
+    @receipt_item.destroy
+  end
+
   # GET /receipt_items_selection_dialog
   def selection_dialog
     @category = Category.find(params[:category])
