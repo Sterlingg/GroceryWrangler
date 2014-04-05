@@ -66,6 +66,9 @@ FactoryGirl.define do
       user_name = Faker::Internet.user_name[0..MAX_USER_NAME_LENGTH - 1]
       user_name[0.. user_name.length - n.to_s.length - 1] + n.to_s
     end
+    
+    password 'password'
+    password_confirmation 'password'
     sequence(:email) { |n| n.to_s + Faker::Internet.email }
   end
 end

@@ -1,12 +1,18 @@
 require 'spec_helper'
 
 describe User do
-  let!(:user){ FactoryGirl.create(:user) }
+  let!(:user){ FactoryGirl.build(:user) }
 
   subject{ user }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+  it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+
+  it { should respond_to(:authenticate) }
+
 
   describe "when email is not present" do
     before { user.email = " " }
@@ -20,12 +26,12 @@ describe User do
 
   describe "when name is the right length" do
     before { user.name = "a" * 20 }
-    it { should be_valid}
+    it { should be_valid }
   end
 
   describe "when email is too long" do
     before { user.email = "a" * 45 + "@" + "a.com" }
-    it { should_not be_valid}
+    it { should_not be_valid }
   end
 
   describe "when email is the right length" do
@@ -75,7 +81,38 @@ describe User do
 
   describe "when email address is already taken" do
     it "should not be valid" do
+      user.save
       expect(user.dup).not_to be_valid
+    end
+  end
+
+  describe "when the password is blank" do
+    before do
+      user.password = ""
+      user.password_confirmation = ""
+    end
+    it "should not be valid" do
+      expect(user).not_to be_valid
+    end
+  end
+
+  describe "when the password is present and valid" do
+    before do
+      user.password = "wowsuchpassword1"
+      user.password_confirmation = "wowsuchpassword1"
+    end
+    it "should not be valid" do
+      expect(user).to be_valid
+    end
+  end
+
+  describe "when the password's length is too short'" do
+    before do
+      user.password = "wow"
+      user.password_confirmation = "wow"
+    end
+    it "should not be valid" do
+      expect(user).not_to be_valid
     end
   end
 end
