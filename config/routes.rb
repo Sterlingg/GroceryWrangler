@@ -6,9 +6,14 @@ JoseCanseco::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
+  resources :users
   resources :receipts
   resources :categories
   resources :receipt_items, only: [:destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   match '/budgeting',    to: 'budgeting#index',    via: 'get'
   match '/price_trend',   to: 'price_trend#index',   via: 'get'
