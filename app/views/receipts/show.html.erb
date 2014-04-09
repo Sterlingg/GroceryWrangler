@@ -1,9 +1,13 @@
 <%= provide(:title, 'Show Receipts') %>
 
 <div class="row">
+  <% if @receipt.store %>
+    <h1> Purchased at <%= @receipt.store.name %> </h1>
+  <% end %>
 
-  <h1> Purchased at <%= @receipt.store.name %> </h1>
-  <h2> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h2>
+  <% if @receipt.date_purchased %>
+    <h2> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h2>
+  <% end %>
   <div id="receipt-total" class=".col-md-6">
     $<%= @receipt.total %>
   </div>
@@ -11,9 +15,9 @@
 
 <%= add_item_button %>
 <%= form_for(:receipt_item, url: receipt_items_path, html: { method: :patch }, remote: true) do |f| %>
-<%= f.hidden_field :id, id: "item-id" %>
-<%= f.hidden_field :quantity, id: "item-quantity" %>
-<%= f.hidden_field :price, id: "item-price" %>
+  <%= f.hidden_field :id, id: "item-id" %>
+  <%= f.hidden_field :quantity, id: "item-quantity" %>
+  <%= f.hidden_field :price, id: "item-price" %>
 <% end %>
 
 <table class="table table-responsive table-hover" id="receipt-item-table">
