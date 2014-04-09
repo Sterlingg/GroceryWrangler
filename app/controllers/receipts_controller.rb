@@ -1,5 +1,6 @@
 class ReceiptsController < ApplicationController
-  before_action :signed_in_user, only: [:add_items, :index, :show]
+  before_action :signed_in_user, only: [:add_items, :index, :new, :show]
+  DEFAULT_TOTAL = 0
 
   # POST /receipt_add_items
   def add_items
@@ -41,10 +42,28 @@ class ReceiptsController < ApplicationController
     end
   end
 
+  # POST /receipts
+  def create
+    @receipt = Receipt.new(receipt_params)
+    @receipt.user_id = current_user.id
+    if @receipt.save
+      flash[:success] = "Receipt created!"
+      redirect_to @receipt
+    else
+      @errors = @receipt.errors
+      render 'new'
+    end    
+  end
+
   # GET /receipts
   def index
     @receipts = Receipt.where(user_id: current_user.id)
     render layout: "receipt"
+  end
+
+  # GET /receipts/new
+  def new
+    @receipt = Receipt.new
   end
 
   # GET /receipt/#
@@ -64,8 +83,8 @@ class ReceiptsController < ApplicationController
   # the given store_item, or else it returns nil.
   def get_receipt_item(receipt, store_item)
     if receipt.nil? or store_item.nil?
-       return nil
-     end
+      return nil
+    end
 
     receipt_items = receipt.receipt_items
     found_item = nil
@@ -79,11 +98,15 @@ class ReceiptsController < ApplicationController
     return found_item
   end
 
-    # Before filters
-    def signed_in_user
-      unless signed_in?
-        flash[:errors] = "Please sign in."
-        redirect_to root_url
-      end
+  def receipt_params
+    params.require(:receipt).permit(:notes, :date_purchased, :store_id)
+  end
+
+  # Before filters
+  def signed_in_user
+    unless signed_in?
+      flash[:errors] = "Please sign in."
+      redirect_to root_url
     end
+  end
 end
