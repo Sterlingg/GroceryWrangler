@@ -12,17 +12,22 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+
     <% if signed_in? %>
     <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Receipts", receipts_path %></li>
       </ul>
+    </div>
       <% else %>
-      <%= simple_form_for(:session, html: {class: 'navbar-form navbar-right' }, :url => sessions_path) do |f| %> 
+
+    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+      <%= simple_form_for(:session, html: {class: 'navbar-form' }, :url => sessions_path) do |f| %> 
       <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
       <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
       <%= f.submit "Login", class: "btn btn-default" %>
     <% end %>
+    </div>
     <% end %>
 
     <% if signed_in? %>
@@ -32,6 +37,7 @@
            method: :delete) %>
     <% end %>
 
-    </div>
+
+
   </div>
 </nav>
