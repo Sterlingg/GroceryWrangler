@@ -7,9 +7,37 @@ describe ReceiptsController do
   let!(:store_item1) { FactoryGirl.create(:store_item) }
   let!(:store_item2) { FactoryGirl.create(:store_item) }
   let!(:receipt_item1) { FactoryGirl.create(:receipt_item, store_item: store_item1) }
+  let!(:wrong_user) { FactoryGirl.create(:user) }
 
   before do 
     visit receipt_path(receipt)
+  end
+
+
+  describe "GET show" do
+
+    describe "As the wrong user" do
+      before do 
+        controller.sign_in wrong_user
+        get :show, {id: receipt.id}
+      end
+
+      it "should not render the receipt layout" do
+        expect(response).not_to render_template("receipt")
+        expect(response).to redirect_to(root_url)
+      end
+    end
+
+    describe "As the correct user" do
+      before do 
+        controller.sign_in receipt.user
+        get :show, {id: receipt.id}
+      end
+
+      it "should render the receipt layout" do
+        expect(response).to render_template("receipt")
+      end
+    end
   end
 
   describe "GET index" do

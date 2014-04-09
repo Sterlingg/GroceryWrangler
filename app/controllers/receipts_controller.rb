@@ -1,4 +1,5 @@
 class ReceiptsController < ApplicationController
+  before_action :signed_in_user, only: [:add_items, :index, :show]
 
   # POST /receipt_add_items
   def add_items
@@ -42,13 +43,20 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts
   def index
-    @receipts = Receipt.all()
+    @receipts = Receipt.where(user_id: current_user.id)
+    render layout: "receipt"
   end
 
   # GET /receipt/#
   def show
     @receipt = Receipt.find(params[:id])
-    render layout: "receipt"
+
+    if current_user && current_user.id == @receipt.user.id
+      render layout: "receipt"
+    else
+      flash[:errors] = "This is not your receipt!"
+      redirect_to root_url
+    end
   end
 
   private
@@ -70,4 +78,12 @@ class ReceiptsController < ApplicationController
 
     return found_item
   end
+
+    # Before filters
+    def signed_in_user
+      unless signed_in?
+        flash[:errors] = "Please sign in."
+        redirect_to root_url
+      end
+    end
 end

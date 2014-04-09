@@ -10,7 +10,7 @@ namespace :db do
     5.times do
       stores.each { |store| store.receipts.create!(date_purchased: rand(10.years).from_now,
                                                    notes: Faker::Lorem.paragraph,
-                                                   total: 8.95) }
+                                                   total: 8.95, user: FactoryGirl.create(:user)) }
     end
 
     10.times do |n|
@@ -19,6 +19,7 @@ namespace :db do
 
     receipts = Receipt.all()
     categories = Category.all()
+
     # Add 1 store item for each category and add 10 store items to each receipt.
     10.times do |n|
       s_item = StoreItem.create!(name: Faker::Commerce.product_name + n.to_s, 
@@ -48,6 +49,9 @@ namespace :db do
       end
       cat.save
     end
+
+    
+
 
   end
 end

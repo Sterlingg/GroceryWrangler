@@ -1,11 +1,11 @@
+<% if receipt %>
 <div class="col-md-4">
   <div class="receipt-container">
 
     <%= link_to receipt, :title => "Some link" do %>
     <span class="link-spanner"></span>
     <% end %>
-    
-    <% if receipt %>
+
     <div class="row">
       <%= receipt.store.name %>
     </div>
@@ -18,8 +18,11 @@
       $<%= receipt.total %>
     </div>
 
-    <% else %>
-    Nil object here.
-    <% end %>
   </div>
 </div>
+<% else %>
+
+<div class="col-md-4">
+  
+</div>
+<% end %>
