@@ -21,12 +21,17 @@
     </div>
       <% else %>
 
-    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+    <div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+
       <%= simple_form_for(:session, html: {class: 'navbar-form' }, :url => sessions_path) do |f| %> 
       <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
       <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
       <%= f.submit "Login", class: "btn btn-default" %>
+    <%= link_to("Sign up!", 
+           signup_path,
+           class: "btn btn-default") %>
     <% end %>
+
     </div>
     <% end %>
 
@@ -36,8 +41,6 @@
            class: "btn btn-default navbar-btn pull-right",
            method: :delete) %>
     <% end %>
-
-
 
   </div>
 </nav>
