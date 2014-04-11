@@ -10,6 +10,7 @@ JoseCanseco::Application.routes.draw do
   resources :receipts
   resources :categories
   resources :receipt_items, only: [:destroy]
+  resources :store_items, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new',         via: 'get'
