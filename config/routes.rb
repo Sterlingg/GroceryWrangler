@@ -6,7 +6,7 @@ JoseCanseco::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  resources :users, only [:create, :index, :new]
+  resources :users, only: [:create, :index, :new]
   resources :store_items, only: [:create, :new, :show]
   resources :sessions, only: [:create, :destroy, :new]
   resources :receipt_items, only: [:destroy]
