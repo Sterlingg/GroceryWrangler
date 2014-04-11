@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       sign_in @user
       redirect_to receipts_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:errors] = 'Invalid email/password combination'
     end
   end
 
