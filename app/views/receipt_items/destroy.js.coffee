@@ -6,6 +6,6 @@ price_removed =  <%= @receipt_item.price %>
 $("#receipt-table-item-#{receipt_item_id}").remove()
 
 receipt_total_element = $('#receipt-total')
-old_total = parseFloat receipt_total_element.html().substring(1)
+new_rec_total = <%= @receipt.total %>
 
-receipt_total_element.html("$" + (old_total - (quantity_removed * price_removed)).toFixed(2))
+receipt_total_element.html("$" + new_rec_total.toFixed(2))

@@ -3,7 +3,9 @@ class ReceiptItemsController < ApplicationController
   # DELETE /receipt_items
   def destroy
     @receipt_item = ReceiptItem.find(params[:id])
+    @receipt = Receipt.find_by_id(@receipt_item.receipt_id)
     @receipt_item.destroy
+    @receipt.reload
   end
 
   # GET /receipt_items_selection_dialog
@@ -19,11 +21,14 @@ class ReceiptItemsController < ApplicationController
   # PATCH /receipt_items/#
   def update
     @receipt_item = ReceiptItem.find(params[:receipt_item][:id])
+    @receipt = Receipt.find_by_id(@receipt_item.receipt_id)
+
     @old_price = @receipt_item.price
     @old_quantity = @receipt_item.quantity
     
     if @receipt_item.update_attributes(receipt_item_params)
       respond_to do |format|
+        @receipt.reload
         format.js
       end
     else
