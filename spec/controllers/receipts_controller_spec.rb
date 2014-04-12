@@ -13,9 +13,16 @@ describe ReceiptsController do
     visit receipt_path(receipt)
   end
 
+  describe "DELETE destroy" do
+    before do
+      controller.sign_in receipt.user
+    end
+    it "should delete the specified item from the database" do
+      expect{delete :destroy, id: receipt.id}.to change{Receipt.all.length}.by -1
+    end
+  end
 
   describe "GET show" do
-
     describe "As the wrong user" do
       before do 
         controller.sign_in wrong_user
@@ -41,19 +48,21 @@ describe ReceiptsController do
   end
 
   describe "GET index" do
-
-    before { get :index }
+    before do
+      controller.sign_in receipt.user
+      get :index 
+    end
 
     it "renders the index template" do
       expect(response).to render_template("index")
     end
-
-    it "should render the application template" do
-      expect(response).to render_template("layouts/application")
-    end
   end 
 
   describe "add_items" do
+    before do
+      controller.sign_in receipt.user
+    end
+
     describe "when the store item is not already on the receipt" do
       it "should create a new receipt item with the specified store item" do
         expect do
