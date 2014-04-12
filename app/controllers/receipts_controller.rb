@@ -53,6 +53,13 @@ class ReceiptsController < ApplicationController
     end    
   end
 
+  # DELETE /receipt/#
+  def destroy 
+    @receipt = Receipt.find(params[:id])
+    @receipt.destroy
+    redirect_to receipts_url
+  end
+
   # GET /receipts
   def index
     @receipts = Receipt.where(user_id: current_user.id)
