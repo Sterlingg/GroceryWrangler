@@ -1,6 +1,15 @@
 @import "bootstrap";
 
 /* Receipt index */
+
+body {
+    background-color: #000;
+}
+
+.container-fluid{
+    background-color: #aaaaaa;
+}
+
 .col-md-4
 {
     .receipt-container{
