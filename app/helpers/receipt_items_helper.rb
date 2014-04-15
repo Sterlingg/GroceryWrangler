@@ -1,7 +1,7 @@
 module ReceiptItemsHelper
 
   def cancel_edit_button()
-    class_string = "cancel-edit-item-btn hide btn btn-primary btn-sm btn-danger glyphicon glyphicon-ban-circle"
+    class_string = "cancel-edit-item-btn hide btn btn-sm btn-danger glyphicon glyphicon-ban-circle"
     button_tag("", type: "button", class: class_string)
   end
 
@@ -12,7 +12,7 @@ module ReceiptItemsHelper
   end
 
   def delete_button(id)
-    class_string = "delete-item-btn btn btn-primary btn-sm btn-danger glyphicon glyphicon-remove pull-right"
+    class_string = "delete-item-btn btn btn-sm btn-danger glyphicon glyphicon-remove pull-right"
     link_to("", 
             receipt_item_path(id), 
             class: class_string, 
@@ -21,7 +21,7 @@ module ReceiptItemsHelper
   end
 
   def save_button()
-    class_string = "save-item-btn hide btn btn-primary btn-sm glyphicon glyphicon-floppy-disk"
+    class_string = "save-item-btn hide btn btn-success btn-sm glyphicon glyphicon-floppy-disk"
     button_tag("", class: class_string)
   end
 end

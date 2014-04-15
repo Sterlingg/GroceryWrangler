@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-default" role="navigation">
+<nav class="navbar navbar-josecanseco" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-left" href="/">#JoseCanseco</a>
+      <a class="navbar-brand navbar-left" href="/">JoseCanseco</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,26 +33,29 @@
       </ul>
     </div>
       <% else %>
-    <div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
-      <%= simple_form_for(:session, html: {class: 'navbar-form' }, :url => sessions_path) do |f| %> 
+    <div class="nav navbar-right vertical-centre" id="bs-example-navbar-collapse-1">
+      <%= simple_form_for(:session, html: {class: 'navbar-form josecanseco-navbar-form'}, :url => sessions_path) do |f| %> 
       <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
       <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-      <%= f.submit "Login", class: "btn btn-default" %>
+      <%= f.submit "Login", class: "btn josecanseco-navbar-text" %>
     <%= link_to("Sign up!", 
            signup_path,
-           class: "btn btn-default") %>
+           class: "btn josecanseco-navbar-text") %>
     <% end %>
 
     </div>
     <% end %>
 
     <% if signed_in? %>
-
-    <%= link_to("Log out", 
-           signout_path,
-           class: "btn btn-default navbar-btn pull-right",
-           method: :delete) %>
-      <p class="navbar-text pull-right"> Welcome <%= current_user.name %> </p>
+      <div class="pull-right">
+	<p class="btn josecanseco-navbar-fancy-text"> Welcome <%= current_user.name %> </p>
+	<div class="btn">
+	<%= link_to("Logout", 
+		    signout_path,
+		    class: "btn josecanseco-navbar-text",
+		    method: :delete) %>
+	</div>
+      </div>
     <% end %>
 
   </div>

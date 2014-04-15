@@ -1,20 +1,126 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
 
-/* Receipt index */
+/* Colors */
+$cherryred: rgba(224, 39, 39, 1);
+$defaultdangerred: #C3211B;
+
+$theblackdeath: rgba(0, 0, 0, 0.78);
+
+$sunburstorange: #FF8900;
+
+$mintygreen: rgba(64, 204, 75, 0.86);
+
+$dirtybrown: rgba(194, 160, 123, 1);
+
+$lightgreyskyblue: rgba(196, 219, 219, 0.81);
 
 body {
-    background-color: #000;
+    background-color: $lightgreyskyblue;
+}
+
+/* Fonts */
+h1, h2, h3, h4, h5, h6, span {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a, input, button, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* */
+a {
+    color: white;
+}
+
+
+
+.btn-default {
+    background-color: $dirtybrown;
+    color: white;
+}
+
+.btn-primary {
+    background-color: $mintygreen; 
+    border-color: $mintygreen;
+}
+
+.btn-danger {
+    background-color: $cherryred;
+    border-color: $cherryred;
+}
+
+/* Header */
+
+.dropdown-toggle {
+    font-size: $font-size-h4;
+}
+
+.navbar-josecanseco {
+    line-height: 0;
+}
+
+.josecanseco-navbar-form {
+    padding: 0px;
+}
+
+.josecanseco-navbar-fancy-text {
+    color: rgba(255, 255, 255, 0.79);
+    font-family: 'Lobster', Georgia, Times, serif;
+    font-size: $font-size-h3;
+}
+
+.josecanseco-navbar-text {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size-h4;
+}
+
+.navbar-brand {
+    color: rgba(236, 236, 237, 0.92);
+    font-family: 'Lobster', Georgia, Times, serif;
+    font-size: $font-size-h2;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.dropdown-toggle{
+    color: rgba(236, 236, 237, 0.99);
+}
+
+/* Dropdown hovers */
+.nav > li > a:hover, .nav > li > a:focus{
+}
+
+.navbar-header > a:hover {
+    color: #FFFFFF;
 }
 
 .container-fluid{
-    background-color: #aaaaaa;
+    /* TODO: Change to SASS gradient style. */
+    background: -moz-linear-gradient(45deg,  rgba(49,165,94,1) 0%, rgba(117,216,145,0.8) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(49,165,94,1)), color-stop(100%,rgba(117,216,145,0.8))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  rgba(49,165,94,1) 0%,rgba(117,216,145,0.8) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  rgba(49,165,94,1) 0%,rgba(117,216,145,0.8) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  rgba(49,165,94,1) 0%,rgba(117,216,145,0.8) 100%); /* IE10+ */
+    background: linear-gradient(45deg,  rgba(49,165,94,1) 0%,rgba(117,216,145,0.8) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31a55e', endColorstr='#cc75d891',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .col-md-4
 {
     .receipt-container{
-	background-color:#fef;
-	border: 7px solid #e6fbf8;
+	background-color: $mintygreen;
+	border: 7px solid $dirtybrown;
 	border-radius:3px;
 	margin-top: 28px;
     }
@@ -44,4 +150,12 @@ body {
 
 #add-item-btn {
     margin-top: 1em;
+}
+
+/* Utility */
+
+.vertical-centre{
+    display:inline-block;
+    vertical-align: middle;
+    float: none;
 }
