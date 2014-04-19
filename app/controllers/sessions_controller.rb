@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :signed_in_user, only: [:destroy]
   
   # POST /sessions
   def create
@@ -15,5 +16,13 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to root_url
+  end
+
+  # Before filters
+  def signed_in_user
+    unless signed_in?
+      flash[:errors] = "Please sign in."
+      redirect_to root_url
+    end
   end
 end
