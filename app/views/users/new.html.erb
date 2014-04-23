@@ -1,37 +1,38 @@
 <% provide(:title, 'Sign up') %>
-
-<div class="col-md-5">
-  <div id="signup-info" >
-    <h2>Join JoseCanseco today!</h2>
-    Sign up now to...
-    <ul>
-      <li>Manage your receipts</li>
-      <li>Track your spending</li>
-      <li>Follow price trends</li>
-      <li>Scan your receipts</li>
-    </ul>
-    Membership is free!
+<div class="row">
+  <div class="col-md-5 vertical-centre">
+    <div id="signup-info" >
+      <h2>Join JoseCanseco today!</h2>
+      Sign up now to...
+      <ul>
+	<li>Manage your receipts</li>
+	<li>Track your spending</li>
+	<li>Follow price trends</li>
+	<li>Scan your receipts</li>
+      </ul>
+      Membership is free!
+    </div>
   </div>
-</div>
 
-<div class="col-md-4">
-  <div id="signup-form" class="row">
-    <%= simple_form_for(:user, :url => {:action => "create"}, html: {class: 'form-horizontal' }) do |f| %> 
-    <%= render 'shared/error_messages' %>
+  <div class="col-md-4">
+    <div id="signup-form">
+      <%= simple_form_for(:user, :url => {:action => "create"}, html: {class: 'form-horizontal' }) do |f| %> 
+      <%= render 'shared/error_messages' %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control"  %>
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control"  %>
 
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => "form-control" %>
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => "form-control" %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => "form-control" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => "form-control" %>
 
-    <%= f.label :password_confirmation, "Password Confirmation", :class => "control-label" %>
-    <%= f.password_field :password_confirmation, :class => "form-control" %>
+      <%= f.label :password_confirmation, "Password Confirmation", :class => "control-label" %>
+      <%= f.password_field :password_confirmation, :class => "form-control" %>
 
-    <%= f.submit "Create my account", class: "btn btn-large btn-primary", :id => "signup-submit" %>
-    <% end %>
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary", :id => "signup-submit" %>
+      <% end %>
+    </div>
   </div>
 </div>
