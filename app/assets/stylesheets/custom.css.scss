@@ -14,7 +14,7 @@ $mintygreen: rgba(64, 204, 75, 0.86);
 $transmintygreen: rgba(64, 204, 75, 0.52);
 $lighttransgreen: rgba(23, 168, 33, 0.12);
 
-$dirtybrown: rgba(194, 160, 123, 0.44);
+$dirtybrown: rgba(194, 160, 123, 1);
 
 $lightgreyskyblue: rgba(196, 219, 219, 0.81);
 
@@ -81,6 +81,30 @@ a {
     border-radius: 10px;
     box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
     overflow: hidden;
+}
+
+/* Signup page*/
+#signup-info {
+	float: left;
+	border-radius: 8px;
+	color: white;
+	padding: 1em;
+	padding-left: 1.5em;
+	padding-bottom: 2em;
+	margin-right: 2em;
+
+	font-size: 16pt;
+	/*background-color: rgb(50, 237, 109); */
+	background-color: $dirtybrown;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#signup-form {
+	text-align: left;
+}
+
+#signup-submit {
+	margin-top: 2em;
 }
 
 /* Bootstrap overrides*/
@@ -163,7 +187,6 @@ a:hover, a:focus{
     }
 }
 
-
 .td-centered {
     vertical-align: middle;
 } 
@@ -193,27 +216,3 @@ a:hover, a:focus{
     float: none;
 }
 
-#signup-info {
-	float: left;
-	width: 35%;
-	border-radius: 8px;
-	color: rgb(255, 255, 255);
-	padding: 1em;
-	padding-left: 1.5em;
-	height: 350px;
-	margin-right: 2em;
-	font-size: 16pt;
-	/*background-color: rgb(50, 237, 109); */
-	background-color: $dirtybrown;
-    font-family: 'Open Sans', sans-serif;
-}
-
-#signup-form {
-	float: left;
-	width: 55%;
-	text-align: left;
-}
-
-#signup-submit {
-	margin-top: 2em;
-}
