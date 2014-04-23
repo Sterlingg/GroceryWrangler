@@ -1,7 +1,6 @@
 <% provide(:title, 'Create an item!') %>
 
 <div class="row">
-  <div class="span6 offset3">
     <%= simple_form_for(:store_item, :url => {:action => "create"}, html: {class: 'form-horizontal' }) do |f| %> 
       <%= render 'shared/error_messages' %>
       
@@ -31,5 +30,4 @@
 
       <%= f.submit "Create Item!", class: "btn btn-large btn-primary" %>
     <% end %>
-  </div>
 </div>
