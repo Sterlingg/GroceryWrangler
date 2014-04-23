@@ -116,6 +116,11 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31a55e', endColorstr='#cc75d891',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.control-label {
+	font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .col-md-4
 {
     .receipt-container{
@@ -132,8 +137,7 @@ a {
 
 .td-centered {
     vertical-align: middle;
-}
-
+} 
 /* http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
 .link-spanner{
   position:absolute; 
@@ -158,4 +162,29 @@ a {
     display:inline-block;
     vertical-align: middle;
     float: none;
+}
+
+#signup-info {
+	float: left;
+	width: 35%;
+	border-radius: 8px;
+	color: rgb(255, 255, 255);
+	padding: 1em;
+	padding-left: 1.5em;
+	height: 350px;
+	margin-right: 2em;
+	font-size: 16pt;
+	/*background-color: rgb(50, 237, 109); */
+	background-color: $dirtybrown;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#signup-form {
+	float: left;
+	width: 55%;
+	text-align: left;
+}
+
+#signup-submit {
+	margin-top: 2em;
 }
