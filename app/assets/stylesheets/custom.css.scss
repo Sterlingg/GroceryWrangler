@@ -69,8 +69,7 @@ a {
     font-size: $font-size-h3;
 }
 
-.josecanseco-navbar-text {
-    color: rgba(255, 255, 255, 1);
+.josecanseco-navbar-text { color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, 0);
     font-family: 'Open Sans', sans-serif;
     font-size: $font-size-h4;
@@ -204,15 +203,50 @@ a:hover, a:focus{
   background-image: url('empty.gif');*/
 }   
 
-#add-item-btn {
-    margin-top: 1em;
-}
-
 /* Utility */
 
 .vertical-centre{
     display:inline-block;
     vertical-align: middle;
     float: none;
+} 
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#add-item-btn {
+    margin-top: 1em;
+}
+
+#signup-info {
+	width: 100%;
+	border-radius: 8px;
+	color: rgb(255, 255, 255);
+	padding: 1em;
+	padding-left: 1.5em;
+	height: 350px;
+	margin-right: 2em;
+	font-size: 16pt;
+	/*background-color: rgb(50, 237, 109); */
+	background-color: $dirtybrown;
+    font-family: 'Open Sans', sans-serif;
+	text-align: left;
+}
+
+#signup-container {
+	text-align: center;
+}
+
+#signup-form {
+	width: 100%;
+	text-align: left;
+}
+
+#signup-submit {
+	margin-top: 2em;
 }
 
