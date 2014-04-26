@@ -16,46 +16,51 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
 
     <% if signed_in? %>
-    <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true"> Receipts <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "View Receipts", receipts_path %></li>
-            <li><%= link_to "Create a receipt", new_receipt_path %></li>
-          </ul>
-        </li>
+      <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true"> Receipts <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "View Receipts", receipts_path %></li>
+              <li><%= link_to "Create a receipt", new_receipt_path %></li>
+            </ul>
+          </li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true"> Items <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Create an item", new_store_item_path %></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-      <% else %>
-    <div class="navbar-right" id="bs-example-navbar-collapse-1">
-      <%= simple_form_for(:session, html: {class: 'navbar-form josecanseco-navbar-form'}, :url => sessions_path) do |f| %> 
-      <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
-      <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-      <%= f.submit "Login", class: "btn josecanseco-navbar-text" %>
-    <%= link_to("Sign up!", 
-           signup_path,
-           class: "btn josecanseco-navbar-text") %>
-    <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true"> Items <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Create an item", new_store_item_path %></li>
+            </ul>
+          </li>
+	</ul>
+      </div>
+    <% else %>
+      <div class="navbar-right josecanseco-navbar-btn">
+	<%= simple_form_for(:session, html: {class: 'navbar-form josecanseco-navbar-form'}, :url => sessions_path) do |f| %> 
+	  <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
+	  <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
 
-    </div>
+	  <div class="btn josecanseco-navbar-btn">
+	    <%= f.submit "Login", class: "btn josecanseco-navbar-text" %>
+	  </div>
+
+	  <div class="btn josecanseco-navbar-btn">
+	    <%= link_to("Sign up!", 
+			signup_path,
+			class: "btn josecanseco-navbar-text") %>
+	<% end %>
+	  </div>
+      </div>
     <% end %>
 
     <% if signed_in? %>
       <div class="navbar-right">
 	<p class="btn josecanseco-navbar-fancy-text"> Welcome <%= current_user.name %> </p>
-	<div class="btn">
-	<%= link_to("Logout", 
-		    signout_path,
-		    class: "btn josecanseco-navbar-text",
-		    method: :delete) %>
+	<div class="btn josecanseco-navbar-btn">
+	  <%= link_to("Logout", 
+		      signout_path,
+		      class: "btn josecanseco-navbar-text",
+		      method: :delete) %>
 	</div>
       </div>
     <% end %>
