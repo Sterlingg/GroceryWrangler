@@ -13,6 +13,7 @@ $sunburstorange: #FF8900;
 $mintygreen: rgba(64, 204, 75, 0.86);
 $transmintygreen: rgba(64, 204, 75, 0.52);
 $lighttransgreen: rgba(23, 168, 33, 0.12);
+$hovergreen: rgba(84, 225, 84, 0.86);
 
 $dirtybrown: rgba(194, 160, 123, 1);
 
@@ -157,6 +158,16 @@ a {
 /* Btn Hovers */
 .btn:hover, .btn:focus {
     color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+    background-color: $hovergreen;
+    border-color: white;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active{
+    background-color: $defaultdangerred;
+    border-color: white;
 }
 
 /* Dropdown click */
