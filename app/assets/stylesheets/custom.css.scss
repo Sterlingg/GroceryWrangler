@@ -38,23 +38,7 @@ a {
     color: white;
 }
 
-.btn-default {
-    background-color: $dirtybrown;
-    color: white;
-}
-
-.btn-primary {
-    background-color: $mintygreen; 
-    border-color: $mintygreen;
-}
-
-.btn-danger {
-    background-color: $cherryred;
-    border-color: $cherryred;
-}
-
 /* Header */
-
 .dropdown-toggle {
     font-size: $font-size-h4;
 }
@@ -116,6 +100,21 @@ a {
 }
 
 /* Bootstrap overrides*/
+.btn-default {
+    background-color: $dirtybrown;
+    color: white;
+}
+
+.btn-primary {
+    background-color: $mintygreen; 
+    border-color: $mintygreen;
+}
+
+.btn-danger {
+    background-color: $cherryred;
+    border-color: $cherryred;
+}
+
 .row  {
     text-align: center;
     margin-right: 0px;
