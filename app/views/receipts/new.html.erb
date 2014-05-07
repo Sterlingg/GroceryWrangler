@@ -5,8 +5,8 @@
     <%= simple_form_for(:receipt, :url => {:action => "create"}, html: {class: 'form-horizontal' }) do |f| %> 
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :date_purchased, "Date Purchased" %>
-      <%= f.date_field :date_purchased, :class => "form-control"  %>
+      <%= f.label :date_purchased, "Date Purchased"%>
+      <%= f.text_field :date_purchased, :class => "form-control", :data => {behaviour: 'datepicker'}  %>
 
       <%= f.label :notes %>
       <%= f.text_area :notes, :class => "form-control"  %>

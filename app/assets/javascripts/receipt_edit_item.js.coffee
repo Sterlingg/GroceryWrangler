@@ -103,3 +103,4 @@ $(document).bind 'page:change', ->
   
   # Update the receipt total.
   $('#receipt-total').html "$" + receipt_total.toFixed(2)
+

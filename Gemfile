@@ -16,7 +16,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'factory_girl_rails', '4.2.1'
 gem "faker", "~> 1.2.0"
 gem "awesome_print"
-gem 'jquery-ui-rails'
+
+# Javascript Assets
+gem 'bootstrap-datepicker-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
