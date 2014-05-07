@@ -54,9 +54,12 @@ edit_btn_handler = ->
   buttons = get_buttons $(this)
   for name, values of cols_to_replace
     td = $(buttons['row'][values['index']])
-  
+
     $('span', td).addClass "hide"
     $('input', td).removeClass "hide"
+
+    $('input', td).val($('span',td).html())
+    
 
   show_save_btn_group(buttons)
 
