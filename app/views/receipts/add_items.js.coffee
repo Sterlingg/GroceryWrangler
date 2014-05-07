@@ -15,6 +15,3 @@ receipt_total_element = $('#receipt-total')
 new_total = <%= @receipt.total %>
 
 receipt_total_element.html("$" +  new_total.toFixed(2))
-
-console.log(receipt_total_element)
-console.log(new_total)

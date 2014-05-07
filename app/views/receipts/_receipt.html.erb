@@ -2,7 +2,6 @@
   <div class="col-md-4">
     <div class="receipt-container">
       <%= link_to receipt, :title => "Some link" do %>
-      <div class="row">
 	<h4>
 	  <% if receipt.store %>
 	    <%= receipt.store.name %>
@@ -18,10 +17,7 @@
 	  <% end %>
 	</h5>
 	<h5> $<%= receipt.total %> </h5>
-      </div>
       <% end %>
-
-    <%= delete_receipt_btn(receipt) %>
     </div>
   </div>
 <% else %>

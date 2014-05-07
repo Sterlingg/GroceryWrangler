@@ -26,17 +26,21 @@ body {
 }
 
 /* Fonts */
-h1, h2, h3, h4, h5, h6, span {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Ubuntu', sans-serif;
 }
 
-a, input, button, p {
+a, input, button, p, span {
     font-family: 'Open Sans', sans-serif;
 }
 
 /* */
 a {
     color: white;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 /* Header */
@@ -68,12 +72,22 @@ a {
     background-color: $lighttransgreen;
     border-radius: 10px;
     box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+    padding: 50px;
     overflow: hidden;
 }
 
 /* Receipt show page*/
 #add-item-btn {
     margin-top: 1em;
+}
+
+#receipt-jumbotron{
+    padding: 0px;
+    box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+}
+
+#store-name-text{
+    font-family: 'Lobster', Georgia, Times, serif;
 }
 
 /* Signup page*/
@@ -199,14 +213,12 @@ a:hover, a:focus{
     font-family: 'Open Sans', sans-serif;
 }
 
-.col-md-4
-{
-    .receipt-container{
-	background-color: $transmintygreen;
-	border: 7px solid $dirtybrown;
-	border-radius: 10px;
-	margin-top: 28px;
-    }
+.receipt-container{
+    box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+    background-color: $transmintygreen;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .td-centered {
@@ -227,7 +239,6 @@ a:hover, a:focus{
 }   
 
 /* Utility */
-
 .vertical-centre{
     display:inline-block;
     vertical-align: middle;
@@ -240,3 +251,9 @@ a:hover, a:focus{
   display: inline-block;
   vertical-align: top;
 }
+
+.centered-text{
+    text-align: center;
+}
+
+
