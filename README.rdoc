@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Populate the database using:
+<tt>heroku run rake db:populate</tt>
 
-Things you may want to cover:
+Use bundler to install gems for app:
+<tt>bundle install</tt>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Start the Rails server for local development:
+<tt>rails s</tt>
