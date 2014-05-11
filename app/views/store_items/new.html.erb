@@ -1,33 +1,36 @@
 <% provide(:title, 'Create an item!') %>
 
 <div class="row">
+  <div id="item-create" class="col-md-5 col-centered">
+    <h2 class="no-top-margin">Create an Item</h2>
     <%= simple_form_for(:store_item, :url => {:action => "create"}, html: {class: 'form-horizontal' }) do |f| %> 
       <%= render 'shared/error_messages' %>
       
-      <%= f.label :name, "Item's Name"%>
+      <%= f.label :name, "Item Name", :class => "string required control-label" %>
       <%= f.text_field :name, :class => "form-control"  %>
 
-      <%= f.label :upc, "UPC"%>
+      <%= f.label :upc, "UPC", :class => "string required control-label" %>
       <%= f.text_field :upc, :class => "form-control"  %>
 
-      <%= f.label :description, "Item Description" %>
+      <%= f.label :description, "Item Description" , :class => "string required control-label" %>
       <%= f.text_area :description, :class => "form-control"  %>
 
-      <%= f.label :price, "Price"%>
+      <%= f.label :price, "Price", :class => "string required control-label" %>
       <%= f.text_field :price, :class => "form-control"  %>
 
-      <%= f.label :weight, "Weight"%>
+      <%= f.label :weight, "Weight", :class => "string required control-label" %>
       <%= f.text_field :weight, :class => "form-control"  %>
 
-      <%= f.label :volume, "Volume" %>
+      <%= f.label :volume, "Volume", :class => "string required control-label"  %>
       <%= f.text_field :volume, :class => "form-control"  %>
 
-      <%= f.label :category_id, "Category" %>
+      <%= f.label :category_id, "Category", :class => "string required control-label"  %>
       <%= collection_select(:store_item, :category_id, Category.all, :id, :name, prompt: true) %>
-
-      <%= f.label :store_id, "Store" %>
+      <%= f.label :store_id, "Store", :class => "string required control-label", :id => "item-label"  %>
       <%= collection_select(:store_item, :store_id, Store.all, :id, :name, prompt: true) %>
-
-      <%= f.submit "Create Item!", class: "btn btn-large btn-primary" %>
+      <div class = "centered-text">
+        <%= f.submit "Create Item!", class: "btn btn-large btn-primary", id: "create-item-submit" %>
+      </div>
     <% end %>
+  </div>
 </div>

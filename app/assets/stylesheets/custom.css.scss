@@ -85,6 +85,10 @@ a:hover {
     font-size: $font-size-h4;
 }
 
+.no-top-margin {
+  margin-top: 0px;
+}
+
 .receipts-container{
     background-color: $lighttransgreen;
     border-radius: 10px;
@@ -116,6 +120,20 @@ a:hover {
 
 #store-name-text{
     font-family: 'Lobster', Georgia, Times, serif;
+}
+
+/* Item create page */
+#item-create {
+  text-align: left;
+  width: 60%;
+}
+
+#create-item-submit {
+  margin-top: 2em;
+}
+
+#item-label {
+  margin-left: 1em;
 }
 
 /* Signup page*/
