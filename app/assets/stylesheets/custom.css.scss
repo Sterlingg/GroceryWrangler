@@ -76,6 +76,17 @@ a:hover {
     overflow: hidden;
 }
 
+/* Receipt create page */
+#receipt-create {
+  text-align: left;
+  width: 50%;
+}
+
+#receipt_store_id {
+	margin-top: 2em;
+  margin-right: 1em;
+}
+
 /* Receipt show page*/
 #add-item-btn {
     margin-top: 1em;
@@ -103,10 +114,6 @@ a:hover {
 	background-color: $dirtybrown;
 	font-family: 'Open Sans', sans-serif;
 	text-align: left;
-}
-
-#signup-container {
-	text-align: center;
 }
 
 #signup-form {
@@ -142,6 +149,11 @@ a:hover {
 
 .form-control{
     border-radius: 9001px;
+}
+
+.border-padding {
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .navbar-brand {
