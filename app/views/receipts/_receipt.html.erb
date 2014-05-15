@@ -2,21 +2,21 @@
   <div class="col-md-4">
     <div class="receipt-container">
       <%= link_to receipt, :title => "Some link" do %>
-	<h4>
-	  <% if receipt.store %>
-	    <%= receipt.store.name %>
-	  <% else %>
-	    Some Store
-	  <% end %>
-	</h3>
-	<h5> 
-	  <% if receipt.date_purchased %>
-	    <%= receipt.date_purchased %> 
-	  <% else %>
-	    Some Date
-	  <% end %>
-	</h5>
-	<h5> $<%= receipt.total %> </h5>
+        <h4>
+       	  <% if receipt.store %>
+       	    <%= receipt.store.name %>
+       	  <% else %>
+       	    Some Store
+       	  <% end %>
+       	</h4>
+       	<h4> 
+       	  <% if receipt.date_purchased %>
+       	    <%= receipt.date_purchased %> 
+       	  <% else %>
+       	    Some Date
+       	  <% end %>
+       	</h4>
+        <h4> $<%= receipt.total %> </h4>
       <% end %>
     </div>
   </div>

@@ -90,10 +90,12 @@ a:hover {
 }
 
 .receipts-container{
-    background-color: $lighttransgreen;
+    background-color: #EEE;
     border-radius: 10px;
-    box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
-    padding: 50px;
+    -webkit-box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
+    -moz-box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
+    box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
+    padding: 1.5em 2.5em 2.5em 2.5em;
     overflow: hidden;
 }
 
@@ -104,7 +106,7 @@ a:hover {
 }
 
 #receipt_store_id {
-	margin-top: 2em;
+  margin-top: 2em;
   margin-right: 1em;
 }
 
@@ -265,11 +267,19 @@ a:hover, a:focus{
 }
 
 .receipt-container{
-    box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0px -1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0px -1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.25);
     background-color: $transmintygreen;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.receipt-container h4, h5 {
+    font-weight: 900;
 }
 
 .td-centered {
