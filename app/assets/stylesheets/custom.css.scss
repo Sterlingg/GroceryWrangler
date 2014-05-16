@@ -35,13 +35,18 @@ a, input, button, p, span {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* */
+/* Links */
 a {
     color: white;
 }
 
 a:hover {
     text-decoration: none;
+}
+
+/* Tables */
+thead {
+	font-size: 18px;
 }
 
 /* Header */
@@ -85,6 +90,12 @@ a:hover {
     font-size: $font-size-h4;
 }
 
+/* Miscellaneous class */
+
+.glyphicon-plus {
+  padding-right: 0.5em;
+}
+
 .no-top-margin {
   margin-top: 0px;
 }
@@ -112,16 +123,21 @@ a:hover {
 
 /* Receipt show page*/
 #add-item-btn {
+	margin: auto;
     margin-top: 1em;
+	margin-bottom: 1em;
+	width: 50%;
 }
 
-#receipt-jumbotron{
+#receipt-jumbotron {
     padding: 0px;
-    box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+	border: 2px solid #fff;
+    //box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
 }
 
 #store-name-text{
     font-family: 'Lobster', Georgia, Times, serif;
+	font-size: 50px;
 }
 
 /* Item create page */

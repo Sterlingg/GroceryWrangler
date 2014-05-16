@@ -1,16 +1,17 @@
 <%= provide(:title, 'Show Receipts') %>
 
+<h2 class="no-top-margin">Purchased at</h2>
 <div id="receipt-jumbotron" class="jumbotron">
   <div class="container">
     <% if @receipt.store %>
       <div class="centered-text">
-	<h1 id="store-name-text"> Purchased at <%= @receipt.store.name %> </h1>
+        <h1 id="store-name-text"> <%= @receipt.store.name %> </h1>
       </div>
     <% end %>
 
     <% if @receipt.date_purchased %>
       <div class="centered-text">
-	<h3> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h3>
+        <h3> <%= @receipt.date_purchased.to_formatted_s(:long_ordinal)%> </h3>
       </div>
     <% end %>
     <h3 id="receipt-total" class="centered-text"> $<%= @receipt.total %> </h3>
