@@ -8,3 +8,5 @@ Use bundler to install gems for app:
 
 Start the Rails server for local development:
 <tt>rails s</tt>
+
+No pre-compilation needed for CoffeeScript.
