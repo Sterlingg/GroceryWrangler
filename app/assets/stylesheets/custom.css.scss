@@ -17,13 +17,15 @@ $hovergreen: rgba(84, 225, 84, 0.86);
 
 $dirtybrown: rgba(194, 160, 123, 1);
 
-$lightgreyskyblue: rgba(196, 219, 219, 0.81);
+$lightgreyskybluetrans: rgba(196, 219, 219, 0.81);
+$lightgreyskyblue: rgba(196, 219, 219, 1);
+
 $shoppingcartgrey: rgba(222, 228, 223, 1);
 
 $transparency: rgba(0, 0, 0, 0);
 
 body {
-    background-color: $lightgreyskyblue;
+    background-color: $lightgreyskybluetrans;
 }
 
 /* Fonts */
@@ -226,6 +228,19 @@ thead {
 
 .dropdown-toggle{
     color: rgba(236, 236, 237, 0.99);
+}
+
+/* Modals */
+.modal-content{
+    background-color: $lightgreyskyblue;
+}
+
+.modal-body > table > tbody > tr > td > a{
+    color: $theblackdeath;
+}
+
+.modal-body > table > tbody > tr > td > a:hover, .modal-body > table > tbody > tr > td > a:focus{
+    color: white;
 }
 
 /* Dropdown hovers */
