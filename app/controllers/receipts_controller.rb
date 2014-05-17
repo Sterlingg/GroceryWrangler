@@ -57,7 +57,7 @@ class ReceiptsController < ApplicationController
   def show
     @receipt = Receipt.find(params[:id])
 
-    if current_user && current_user.id == @receipt.user.id
+    if current_users_receipt?(@receipt)
       render layout: "receipt"
     else
       flash[:errors] = "This is not your receipt!"
@@ -66,6 +66,9 @@ class ReceiptsController < ApplicationController
   end
 
   private
+  def current_users_receipt?(receipt)
+    current_user && current_user.id == receipt.user.id
+  end
 
   def receipt_params
     params.require(:receipt).permit(:notes, :date_purchased, :store_id)
