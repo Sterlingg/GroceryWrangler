@@ -46,7 +46,7 @@ a:hover {
 
 /* Tables */
 thead {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 /* Header */
@@ -55,19 +55,19 @@ thead {
 }
 
 .dropdown-menu {
-	background-color: white;
+    background-color: white;
 }
 
 .dropdown-menu > li {
-	border-bottom: 1px solid $shoppingcartgrey;
+    border-bottom: 1px solid $shoppingcartgrey;
 }
 
 .dropdown-menu > li:hover {
-	background-color: $shoppingcartgrey;
+    background-color: $shoppingcartgrey;
 }
 
 .dropdown-menu > li:last-child {
-	border-bottom: none;
+    border-bottom: none;
 }
 
 .josecanseco-navbar-btn {
@@ -84,7 +84,8 @@ thead {
     font-size: $font-size-h3;
 }
 
-.josecanseco-navbar-text { color: rgba(255, 255, 255, 1);
+.josecanseco-navbar-text {
+    color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, 0);
     font-family: 'Open Sans', sans-serif;
     font-size: $font-size-h4;
@@ -93,11 +94,11 @@ thead {
 /* Miscellaneous class */
 
 .glyphicon-plus {
-  padding-right: 0.5em;
+    padding-right: 0.5em;
 }
 
 .no-top-margin {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 
 .receipts-container{
@@ -112,70 +113,69 @@ thead {
 
 /* Receipt create page */
 #receipt-create {
-  text-align: left;
-  width: 50%;
+    text-align: left;
+    width: 50%;
 }
 
 #receipt_store_id {
-  margin-top: 2em;
-  margin-right: 1em;
+    margin-top: 2em;
+    margin-right: 1em;
 }
 
 /* Receipt show page*/
 #add-item-btn {
-	margin: auto;
+    margin: auto;
     margin-top: 1em;
-	margin-bottom: 1em;
-	width: 50%;
+    margin-bottom: 1em;
+    width: 50%;
 }
 
 #receipt-jumbotron {
     padding: 0px;
-	border: 2px solid #fff;
-    //box-shadow: 6px 6px 6px rgba(255, 255, 255, 1) inset, 5px 5px 5px rgba(255, 255, 255, 1);
+    border: 2px solid #fff;
 }
 
 #store-name-text{
     font-family: 'Lobster', Georgia, Times, serif;
-	font-size: 50px;
+    font-size: 50px;
 }
 
 /* Item create page */
 #item-create {
-  text-align: left;
-  width: 60%;
+    text-align: left;
+    width: 60%;
 }
 
 #create-item-submit {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 #item-label {
-  margin-left: 1em;
+    margin-left: 1em;
 }
 
 /* Signup page*/
 #signup-info {
-	width: 100%;
-	border-radius: 8px;
-	color: white;
-	padding: 1em;
-	padding-left: 1.5em;
-	height: 350px;
-	margin-right: 2em;
-	font-size: 16pt;
-	background-color: $dirtybrown;
-	font-family: 'Open Sans', sans-serif;
-	text-align: left;
+    width: 100%;
+    border-radius: 8px;
+    color: white;
+    padding: 1em;
+    padding-left: 1.5em;
+    height: 350px;
+    margin-right: 2em;
+    font-size: 16pt;
+    background-color: $dirtybrown;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
 }
 
 #signup-form {
-	width: 100%;
-	text-align: left;
+    width: 100%;
+    text-align: left;
 }
 
 #signup-submit {
-	margin-top: 2em;
+    margin-top: 2em;
 }
 
 /* Bootstrap overrides*/
@@ -205,8 +205,8 @@ thead {
 }
 
 .border-padding {
-  padding-left: 2em;
-  padding-right: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .navbar-brand {
@@ -216,12 +216,12 @@ thead {
 }
 
 .navbar .navbar-nav {
-  display: inline-block;
-  float: none;
+    display: inline-block;
+    float: none;
 }
 
 .navbar .navbar-collapse {
-  text-align: center;
+    text-align: center;
 }
 
 .dropdown-toggle{
@@ -278,7 +278,7 @@ a:hover, a:focus{
 }
 
 .control-label {
-	font-size: 16px;
+    font-size: 16px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -300,19 +300,20 @@ a:hover, a:focus{
 
 .td-centered {
     vertical-align: middle;
-} 
+}
+
 /* http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
 .link-spanner{
-  position:absolute; 
-  width:100%;
-  height:100%;
-  top:0;
-  left: 0;
-  z-index: 1;
+    position:absolute; 
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+    z-index: 1;
 
-  /* edit: fixes overlap error in IE7/8, 
-     make sure you have an empty gif 
-  background-image: url('empty.gif');*/
+/* edit: fixes overlap error in IE7/8, 
+   make sure you have an empty gif 
+   background-image: url('empty.gif');*/
 }   
 
 /* Utility */
@@ -323,14 +324,12 @@ a:hover, a:focus{
 } 
 
 .col-centered {
-  float: none;
-  margin: 0 auto;
-  display: inline-block;
-  vertical-align: top;
+    float: none;
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .centered-text{
     text-align: center;
 }
-
-
