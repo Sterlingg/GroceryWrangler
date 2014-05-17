@@ -1,7 +1,6 @@
 <%= provide(:title, 'Receipts') %>
 
 <div class="receipts-container">
-  <h2 class = "no-top-margin">Receipts</h2>
   <% @receipts.in_groups_of(3).each do |group| %>
   <div class="row">
     <%= render partial: 'receipt', collection: group, :as => :receipt %>
