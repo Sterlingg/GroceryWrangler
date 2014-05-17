@@ -1,9 +1,7 @@
 <%= provide(:title, 'Receipts') %>
 
-<div class="receipts-container">
-  <% @receipts.in_groups_of(3).each do |group| %>
+<% @receipts.in_groups_of(3).each do |group| %>
   <div class="row">
     <%= render partial: 'receipt', collection: group, :as => :receipt %>
   </div>
-  <% end %>
-</div>
+<% end %>

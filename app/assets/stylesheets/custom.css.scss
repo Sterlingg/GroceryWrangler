@@ -103,16 +103,6 @@ thead {
     margin-top: 0px;
 }
 
-.receipts-container{
-    background-color: #EEE;
-    border-radius: 10px;
-    -webkit-box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
-    -moz-box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
-    box-shadow: 7px 8px 6px -8px rgba(0,0,0,1);
-    padding: 1.5em 2.5em 2.5em 2.5em;
-    overflow: hidden;
-}
-
 /* Receipt create page */
 #receipt-create {
     text-align: left;
@@ -307,6 +297,7 @@ a:hover, a:focus{
     padding: 10px;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
     font-weight: bold;
+    position: relative;
 }
 
 .receipt-container h4, h5 {
