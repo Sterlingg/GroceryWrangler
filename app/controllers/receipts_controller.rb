@@ -4,12 +4,11 @@ class ReceiptsController < ApplicationController
   # POST /receipt_add_items
   def add_items
     @store_items = StoreItem.where(id: params[:item_ids])
-    
-    @receipt = Receipt.find(params[:receipt])
-    @new_receipt_items = []
     @items_to_update = []
-
-    unless @receipt.update_quantity_and_price(@store_items, @items_to_update, @new_receipt_items, params)
+    @receipt = Receipt.find(params[:receipt])
+    
+    items = @receipt.update_quantity_and_price(@store_items, params) 
+    unless items
         respond_to do |format|
         format.js { render 'error' and return }
       end
@@ -17,8 +16,9 @@ class ReceiptsController < ApplicationController
 
     # This should be safe as the quantity in the database must be a number, and 
     # item_id is gathered from the database itself.
-    @items_to_update = @items_to_update.to_json.html_safe
-    @new_receipt_items.each {|item| item.save}
+    @items_to_update = items[:items_to_update].to_json.html_safe
+    @new_receipt_items = items[:new_rec_items]
+    items[:new_rec_items].each {|item| item.save}
     @receipt.reload
   end
 

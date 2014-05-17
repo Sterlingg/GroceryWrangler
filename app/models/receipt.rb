@@ -25,27 +25,32 @@ class Receipt < ActiveRecord::Base
     found_item
   end
 
-  def update_quantity_and_price(store_items, items_to_update, new_receipt_items, params)
-    store_items.each do |store_item|
-      same_receipt_item = self.find_store_item(store_item)
-      if same_receipt_item
-        same_receipt_item.quantity += params["quantity_item_#{store_item.id}"].to_f
+  def update_quantity_and_price(store_items, params)
+    @new_rec_items = []
+    @items_to_update = []
 
-        same_receipt_item.save!
-        items_to_update.append({item_id: same_receipt_item.id, quantity: same_receipt_item.quantity})
+    store_items.each do |store_item|
+      same_rec_item = self.find_store_item(store_item)
+      if same_rec_item
+        same_rec_item.quantity += params["quantity_item_#{store_item.id}"].to_f
+
+        same_rec_item.save!
+        @items_to_update.append({item_id: same_rec_item.id, quantity: same_rec_item.quantity})
       else
-        @new_receipt_item = ReceiptItem.new(quantity: params["quantity_item_#{store_item.id}"], 
+        @new_rec_item = ReceiptItem.new(quantity: params["quantity_item_#{store_item.id}"], 
                                             price: params["store_item_price_#{store_item.id}"], 
                                             store_item: store_item,
-                                            receipt: @receipt)
+                                            receipt: self)
 
-        if @new_receipt_item.valid?
-          new_receipt_items.push(@new_receipt_item) 
+        if @new_rec_item.valid?
+          @new_rec_items.push(@new_rec_item)
         else
           return false
         end
       end
     end
+
+    return {new_rec_items: @new_rec_items, items_to_update: @items_to_update}
   end
 
 end
