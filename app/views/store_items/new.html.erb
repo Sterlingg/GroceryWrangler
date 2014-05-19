@@ -25,8 +25,10 @@
 
       <%= f.label :category_id, "Category", :class => "string required control-label"  %>
       <%= collection_select(:store_item, :category_id, Category.all, :id, :name, prompt: true) %>
+
       <%= f.label :store_id, "Store", :class => "string required control-label", :id => "item-label"  %>
       <%= collection_select(:store_item, :store_id, Store.all, :id, :name, prompt: true) %>
+
       <div class = "centered-text">
         <%= f.submit "Create Item!", class: "btn btn-large btn-primary", id: "create-item-submit" %>
       </div>
