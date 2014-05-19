@@ -25,7 +25,9 @@
   <td class="td-centered"> <span><%= receipt_item.store_item.weight %></span> </td>
   <td class="td-centered"> <span><%= receipt_item.store_item.volume %></span> </td>
   <td class="td-centered" %>
-    <span class="item-table-price-text"id=<%="item_price_#{receipt_item.id}"%>><%= receipt_item.price %></span> 
+    <span class="item-table-price-text"id=<%="item_price_#{receipt_item.id}"%>>
+      <%= sprintf('%.2f', receipt_item.price) %>
+    </span> 
     <%= text_field :receipt_item, :price, class: "hide item-table-price", size: 5 %>
   </td>
   <td>
