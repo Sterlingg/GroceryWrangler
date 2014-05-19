@@ -38,9 +38,9 @@ class Receipt < ActiveRecord::Base
         @items_to_update.append({item_id: same_rec_item.id, quantity: same_rec_item.quantity})
       else
         @new_rec_item = ReceiptItem.new(quantity: params["quantity_item_#{store_item.id}"], 
-                                            price: params["store_item_price_#{store_item.id}"], 
-                                            store_item: store_item,
-                                            receipt: self)
+                                        price: params["store_item_price_#{store_item.id}"], 
+                                        store_item: store_item,
+                                        receipt: self)
 
         if @new_rec_item.valid?
           @new_rec_items.push(@new_rec_item)

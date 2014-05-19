@@ -13,7 +13,8 @@ class ReceiptItemsController < ApplicationController
     @category = Category.find(params[:category])
     @receipt = Receipt.find(params[:receipt])
     @store_items = @category.store_items
-     respond_to do |format|
+
+    respond_to do |format|
       format.js 
     end
   end
