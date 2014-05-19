@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all()
     @receipt = Receipt.find(params[:receipt])
     respond_to do |format|
-      # TODO: Appropriate error for browsers without JS
       format.js 
     end
   end

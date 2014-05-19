@@ -33,8 +33,7 @@ class ReceiptItemsController < ApplicationController
       end
     else
       respond_to do |format|
-        #TODO: Error here.
-        format.js{head :ok}
+        format.js {head :ok}
       end      
     end
   end
