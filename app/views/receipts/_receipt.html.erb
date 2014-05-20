@@ -12,12 +12,12 @@
        	</h4>
        	<h4> 
        	  <% if receipt.date_purchased %>
-       	    <%= receipt.date_purchased %> 
+       	    <%= receipt.date_purchased.to_formatted_s(:long_ordinal) %>
        	  <% else %>
        	    Some Date
        	  <% end %>
        	</h4>
-        <h4> $<%= receipt.total %> </h4>
+        <h4> $<%= price_string_format(receipt.total) %> </h4>
       <% end %>
     </div>
   </div>
