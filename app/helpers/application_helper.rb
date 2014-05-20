@@ -4,4 +4,8 @@ module ApplicationHelper
     # turns it into a float.
       Integer(str) rescue Float(str)
   end
+
+  def price_string_format(string)
+    sprintf("%.2f", string.to_s)
+  end
 end
