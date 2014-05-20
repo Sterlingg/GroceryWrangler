@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'factory_girl_rails', '4.2.1'
 gem "faker", "~> 1.2.0"
 gem "awesome_print"
+gem 'rename'
 
 # Javascript Assets
 gem 'bootstrap-datepicker-rails'
@@ -43,12 +44,3 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
