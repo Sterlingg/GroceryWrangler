@@ -6,6 +6,7 @@ describe Store do
   subject{ store }
 
   it { should respond_to :name }
+  it { should respond_to :city }
 
   describe "should not be blank" do
     before{ store.name = " " }

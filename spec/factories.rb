@@ -40,6 +40,7 @@ FactoryGirl.define do
       store_name = Faker::Company.name[0..MAX_STORE_NAME_LENGTH - 1]
       store_name[0.. store_name.length - n.to_s.length - 1] + n.to_s
     end
+    city Faker::Address.city
   end
 
   factory :receipt do

@@ -25,7 +25,8 @@ namespace :db do
       s_item = StoreItem.create!(name: Faker::Commerce.product_name + n.to_s, 
                                  description: Faker::Lorem.paragraph,
                                  category: categories[n],
-                        upc: Faker::Number.number(12), price: 8.95, weight: 0.100, volume: 0.0)
+				 store: stores.sample,
+				 upc: Faker::Number.number(12), price: 8.95, weight: 0.100, volume: 0.0)
 
     end
 
