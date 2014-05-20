@@ -31,7 +31,7 @@ class ReceiptItem < ActiveRecord::Base
     if @receipt
       delta_q = new_quantity - old_quantity
       delta_p = new_price - old_price
-      
+
       @receipt.total += (old_quantity * delta_p) + delta_q * (old_price + delta_p)
       @receipt.save!
     end
