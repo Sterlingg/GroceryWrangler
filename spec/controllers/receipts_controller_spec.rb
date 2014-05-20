@@ -87,30 +87,4 @@ describe ReceiptsController do
       end
     end
   end   
-
-  describe "get_store_item" do
-    describe "when store_item isn't on the Receipt'" do
-      it "should return nil" do
-        expect(controller.send(:get_receipt_item, nil, store_item1)).to be_nil
-      end
-    end
-
-    describe "when store_item is on the Receipt" do
-      it "should return the ReceiptItem" do
-        receipt.receipt_items << receipt_item1
-        expect(controller.send(:get_receipt_item, receipt, store_item1)).to eq receipt_item1
-      end
-    end
-
-    describe "when Receipt is nil" do
-      it "should return nil" do
-        expect(controller.send(:get_receipt_item, nil, store_item1)).to be_nil
-      end
-    end
-    describe "when StoreItem is nil" do
-      it "should return nil" do
-        expect(controller.send(:get_receipt_item, receipt, nil)).to be_nil
-      end
-    end
-  end
 end
