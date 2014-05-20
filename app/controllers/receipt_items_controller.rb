@@ -12,7 +12,7 @@ class ReceiptItemsController < ApplicationController
   def selection_dialog
     @category = Category.find(params[:category])
     @receipt = Receipt.find(params[:receipt])
-    @store_items = @category.store_items
+    @store_items = @category.store_items.where(store_id: @receipt.store_id)
 
     respond_to do |format|
       format.js 
