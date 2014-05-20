@@ -7,7 +7,8 @@ class ReceiptsController < ApplicationController
     @items_to_update = []
     @receipt = Receipt.find(params[:receipt])
     
-    items = @receipt.update_quantity_and_price(@store_items, params) 
+    items = @receipt.add_items(@store_items, params)
+
     unless items
         respond_to do |format|
         format.js { render 'error' and return }

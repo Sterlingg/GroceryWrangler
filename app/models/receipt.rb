@@ -13,28 +13,23 @@ class Receipt < ActiveRecord::Base
       return nil
     end
 
-    receipt_items = self.receipt_items
-    found_item = nil
-
-    receipt_items.each do |item| 
-      if item.store_item.name == store_item.name 
-        found_item = item
-      end
+    self.receipt_items.each do |item| 
+      return item if item.store_item.name == store_item.name 
     end
 
-    found_item
+    return false
   end
 
-  def update_quantity_and_price(store_items, params)
+  def add_items(store_items, params)
     @new_rec_items = []
     @items_to_update = []
 
     store_items.each do |store_item|
       same_rec_item = self.find_store_item(store_item)
-      if same_rec_item
-        same_rec_item.quantity += params["quantity_item_#{store_item.id}"].to_f
 
-        same_rec_item.save!
+      if same_rec_item
+        same_rec_item.update_quantity(params["quantity_item_#{store_item.id}"].to_f)
+
         @items_to_update.append({item_id: same_rec_item.id, 
                                  quantity: same_rec_item.quantity})
       else
@@ -53,5 +48,4 @@ class Receipt < ActiveRecord::Base
 
     return {new_rec_items: @new_rec_items, items_to_update: @items_to_update}
   end
-
 end

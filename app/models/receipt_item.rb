@@ -9,6 +9,11 @@ class ReceiptItem < ActiveRecord::Base
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10000000 }
   validate :store_item_id_not_changed
 
+  def update_quantity(quantity)
+    self.quantity += quantity
+    self.save!
+  end
+
   private
   def total_after_removal
     @receipt = Receipt.find_by_id(self.receipt_id)
@@ -36,7 +41,7 @@ class ReceiptItem < ActiveRecord::Base
       @receipt.save!
     end
   end
-
+  
   def store_item_id_not_changed
     if self.store_item_id_changed? && self.persisted?
       errors.add(:store_item_id, "Change of receipt_item.store_item_id not allowed!")
