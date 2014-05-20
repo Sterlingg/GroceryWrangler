@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-JoseCanseco::Application.load_tasks
+GroceryWrangler::Application.load_tasks

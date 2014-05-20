@@ -1,4 +1,4 @@
-JoseCanseco::Application.routes.draw do
+GroceryWrangler::Application.routes.draw do
   get "modal/category_selection"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,7 +8,7 @@ JoseCanseco::Application.routes.draw do
 
   resources :users, only: [:create, :index, :new]
   resources :store_items, only: [:create, :new, :show]
-  resources :sessions, only: [:create, :destroy, :new]
+  resources :sessions, only: [:create]
   resources :receipt_items, only: [:destroy]
   resources :receipts
   resources :categories

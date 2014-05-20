@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-JoseCanseco::Application.config.secret_key_base = secure_token
+GroceryWrangler::Application.config.secret_key_base = secure_token
