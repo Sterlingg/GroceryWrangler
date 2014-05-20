@@ -7,8 +7,8 @@ class Receipt < ActiveRecord::Base
   validates :notes, length: { maximum: 2000 }
 
   def find_store_item(store_item)
-    # Given a store_item it looks through the receipt for a receipt_item that has
-    # the given store_item, or else it returns nil.
+    # Given a store_item it looks through the receipt for a receipt_item that
+    # has the given store_item, or else it returns nil.
     if store_item.nil?
       return nil
     end
@@ -35,7 +35,8 @@ class Receipt < ActiveRecord::Base
         same_rec_item.quantity += params["quantity_item_#{store_item.id}"].to_f
 
         same_rec_item.save!
-        @items_to_update.append({item_id: same_rec_item.id, quantity: same_rec_item.quantity})
+        @items_to_update.append({item_id: same_rec_item.id, 
+                                 quantity: same_rec_item.quantity})
       else
         @new_rec_item = ReceiptItem.new(quantity: params["quantity_item_#{store_item.id}"], 
                                         price: params["store_item_price_#{store_item.id}"], 
