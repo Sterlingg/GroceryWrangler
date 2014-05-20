@@ -1,16 +1,20 @@
-<% provide(:title, 'OperationJoseCanseco') %>
+<% provide(:title, 'GroceryWrangler') %>
 
 <div class="jumbotron">
   <div class="container">
     <h1> Get Going With GroceryWrangler! </h1>
-    <p> With OperationJoseCanseco you have the ability to easily track 
+    <p> With GroceryWrangler you have the ability to easily track 
       your grocery purchasing habits over time.
       Simply create a receipt and add the items you bought to the receipt. 
       If you don't see an item you can easily create it!
     </p>
+
+    <% if not signed_in? %>
     <p> 
-      <a class="btn btn-primary btn-lg" role="button"> Sign up now! &raquo; </a> 
+      <a href=<%= signup_url %> class="btn btn-primary btn-lg" role="button"> Sign up now! &raquo; </a> 
     </p>
+    <% end %>
+
   </div>
 </div>
 
@@ -18,30 +22,20 @@
   <div class="row">
     <div class="col-md-4">
       <h2>Track purchases</h2>
-      <p> 
-	<ul>
-	  <li>
-	    Check what price you've previously purchased items for and compare it with
-	    the price the stores are currently selling it for.
-	  </li>
-	  
-	  <li>
-	    See how healthy what you are buying is with the nutritional information we
-	    provide for you.
-	  </li>
-	</ul>
+      <p>
+	Check what price you've previously purchased items for and compare it with the price the stores are currently selling it for.
       </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      <p><a class="btn btn-default" href=<%= new_receipt_url %> role="button"> Get Started! &raquo;</a></p>
     </div>
     <div class="col-md-4">
       <h2>View seasonal trends</h2>
       <p> Under construction. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      <p><a class="btn btn-default" href="#" role="button"> Get Started! &raquo;</a></p>
     </div>
     <div class="col-md-4">
       <h2>Create shopping lists</h2>
       <p> Under construction. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      <p><a class="btn btn-default" href="#" role="button"> Get Started! &raquo;</a></p>
     </div>
   </div>
 </div>
