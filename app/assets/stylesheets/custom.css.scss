@@ -104,6 +104,11 @@ thead {
     margin-top: 0px;
 }
 
+.section-head {
+	border-radius: 10px 10px 0px 0px;
+	border: 3px solid #eee;
+}
+
 /* Receipt create page */
 #receipt-create {
     text-align: left;
