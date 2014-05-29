@@ -21,24 +21,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <h2>Track purchases</h2>
-      <p>.
-      Simply create a receipt and add the items you bought to the receipt. 
-      If you don't see an item you can easily create it!
-    </p>
-
-    <% if not signed_in? %>
-    <p> 
-      <a href=<%= signup_url %> class="btn btn-primary btn-lg" role="button"> Sign up now! &raquo; </a> 
-    </p>
-    <% end %>
-
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
 	    <%= image_tag("subheader-purchases.png", :alt => "", :class => "section-head") %>
       <h2>Track purchases</h2>
       <p>
