@@ -1,12 +1,5 @@
-== README
+# GroceryWrangler
+With GroceryWrangler you have the ability to easily track your grocery purchasing habits. Simply create a receipt and add the items you bought to the receipt. If you don't see an item you can easily create it! 
 
-Populate the database using:
-<tt>heroku run rake db:populate</tt>
 
-Use bundler to install gems for app:
-<tt>bundle install</tt>
-
-Start the Rails server for local development:
-<tt>rails s</tt>
-
-No pre-compilation needed for CoffeeScript.
+Get started at http://grocerywrangler.herokuapp.com/ !
